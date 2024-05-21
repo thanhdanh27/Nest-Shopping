@@ -1,0 +1,167 @@
+@import 'slick-carousel/slick/slick.css';
+@import 'slick-carousel/slick/slick-theme.css';
+
+.container-fluid.homeSlider {
+    padding: 25px 40px;
+}
+
+.mainSlider {
+    border-radius: 25px;
+    position: relative;
+    outline: none !important;
+}
+
+.imgSlider {
+    border-radius: 25px;
+    width: 100%;
+}
+
+.slick-arrow {
+    position: absolute;
+    background-color: #f2f3f4 !important;
+    width: 40px;
+    height: 40px;
+    z-index: 1;
+    border-radius: 50%;
+    transition: all linear 0.3s;
+    animation: showBtn linear 0.3s;
+    z-index: 1;
+}
+
+.mainSlider .slick-arrow {
+    display: none !important;
+}
+
+@keyframes showBtn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.slick-prev:before {
+    content: '\f104' !important;
+    font-family: 'FontAwesome' !important;
+    color: var(--primary-color);
+    font-weight: 200 !important;
+}
+
+.slick-next:before {
+    content: '\f105' !important;
+    font-family: 'FontAwesome' !important;
+    color: var(--primary-color);
+}
+
+.slick-prev.slick-disabled:before,
+.slick-next.slick-disabled:before {
+    opacity: 1 !important;
+}
+
+.slick-arrow.slick-prev {
+    left: 2%;
+}
+
+.slick-arrow.slick-next {
+    right: 2%;
+}
+
+.slick-arrow:hover {
+    background-color: var(--primary-color) !important;
+}
+
+.slick-arrow:hover.slick-prev:before {
+    color: #fff !important;
+}
+
+.slick-arrow:hover.slick-next:before {
+    color: #fff !important;
+}
+
+.mainSlider:hover .slick-arrow {
+    display: block !important;
+}
+
+.slick-dots {
+    top: 90%;
+}
+
+.slick-dots li button:before {
+    font-size: 1.5rem;
+    content: '\f111';
+    width: 15px;
+    height: 15px;
+    font-family: FontAwesome !important;
+    border: 1px solid #000;
+    line-height: 15px;
+    border-radius: 50%;
+    color: transparent;
+    opacity: 1;
+    transition: all linear 0.3s;
+}
+
+.slick-dots li:hover button:before {
+    background-color: #bce3c9 !important;
+}
+.slick-dots li.slick-active button:before {
+    color: transparent;
+    background-color: var(--primary-color);
+    border-color: transparent;
+}
+
+.wrapInfoSlider {
+    position: absolute;
+    top: 80px;
+    left: 100px;
+}
+
+.sliderHeading {
+    font-size: 6.4rem;
+    font-weight: 700;
+    width: 600px;
+    color: #253d4e;
+    line-height: 1;
+    margin-bottom: 30px;
+}
+
+.sliderTitle {
+    font-size: 3rem;
+    color: #7e7e7e;
+}
+
+.inputSlider {
+    width: 430px;
+    padding-left: 25px;
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    height: 64px;
+    border-radius: 50px;
+    margin-top: 50px;
+}
+
+.inputSlider .iconInput {
+    opacity: 0.5;
+}
+
+.inputSlider input {
+    width: 210px;
+    margin-left: 20px;
+    margin-right: 15px;
+    border: none;
+}
+
+.inputSlider .btnSlider {
+    height: 100%;
+    flex: 1;
+    border: none;
+    background-color: var(--primary-color);
+    border-radius: 50px;
+    color: #fff;
+    transition: all linear 0.2s;
+}
+
+.inputSlider .btnSlider:hover {
+    filter: brightness(0.9);
+}

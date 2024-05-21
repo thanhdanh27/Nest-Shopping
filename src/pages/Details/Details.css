@@ -1,0 +1,461 @@
+ul.breadcrumb {
+    margin: auto;
+    text-transform: capitalize;
+}
+
+.wrapBreadCumb {
+    background-color: #fff;
+    border-bottom: 1px solid #ececec;
+    padding: 20px 40px;
+}
+
+ul.breadcrumb li + li:before {
+    padding: 8px;
+    color: #7e7e7e;
+    content: '\f105';
+    font-family: 'FontAwesome';
+    font-size: 1rem;
+}
+
+ul.breadcrumb li {
+    font-size: 1.4rem;
+    font-weight: 500;
+}
+
+ul.breadcrumb li a {
+    color: #3bb77e;
+    transition: all linear 0.3s;
+}
+
+ul.breadcrumb li a:hover {
+    color: #ffc107;
+}
+
+ul.breadcrumb li.active {
+    background-color: unset !important;
+    color: #7e7e7e;
+}
+
+.detailProduct {
+    margin-top: 30px;
+}
+
+.detailProduct .productInfo h1 {
+    font-size: 4rem;
+}
+
+.detailProduct .productInfo .starReview {
+    display: flex;
+    align-items: center;
+}
+
+.detailProduct .productInfo .starReview .numReview {
+    color: #b7b7b7;
+    margin-left: 5px;
+}
+
+.detailProduct .productInfo .wrapPrice .newPrice {
+    color: #3bb77e;
+    font-size: 5.8rem;
+    font-weight: 700;
+}
+
+.detailProduct .productInfo .wrapPrice span.oldPrice {
+    color: #b6b6b6;
+    font-size: 2.8rem;
+    font-weight: 700;
+    text-decoration: line-through;
+    margin-left: 15px;
+    position: relative;
+}
+
+.detailProduct .productInfo .wrapPrice .salePercent {
+    position: absolute;
+    top: -12px;
+    left: 0;
+    color: #fdc040;
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+.detailProduct .productInfo .desProduct {
+    color: #7e7e7e;
+    font-size: 1.7rem;
+}
+
+.detailProduct .wrapZoomImg {
+    border: 1px solid #ececec;
+    border-radius: 10px;
+    overflow: hidden;
+    height: 479px;
+    width: 100%;
+}
+
+.tableSize span {
+    font-weight: 700;
+    color: #7e7e7e;
+    margin-right: 10px;
+}
+
+.tableSize ul {
+    display: inline-flex;
+}
+
+.tableSize ul li {
+    margin: 0 2px;
+    padding: 5px 8px;
+    border-radius: 7px;
+    color: #7e7e7e;
+    cursor: pointer;
+    transition: all linear 0.1s;
+}
+
+.tableSize ul li:hover {
+    background-color: #3bb77e;
+    color: #fff;
+}
+
+.tableSize ul li.selected {
+    background-color: #3bb77e;
+    color: #fff;
+}
+
+.zoomSlider {
+    margin-top: 30px;
+}
+
+.zoomSlider .slick-slide {
+    padding-right: 15px;
+    padding-left: 1px;
+}
+
+.zoomSlider .slick-slide .item {
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.zoomSlider .slick-current .item {
+    border: 1px solid #a2d2c9;
+}
+
+.iiz__btn {
+    display: none !important;
+}
+
+.productInfo .wrapWidget {
+    display: flex;
+    margin-top: 25px;
+}
+
+.productInfo .wrapWidget .boxInput {
+    width: 100px;
+    padding: 10px 25px 10px 30px;
+    border-radius: 5px;
+    border: 2px solid #3bb77e;
+    position: relative;
+}
+
+.productInfo .wrapWidget .boxInput input {
+    border: none;
+    width: 70%;
+    font-size: 1.7rem;
+}
+
+.productInfo .wrapWidget input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.productInfo .wrapWidget .boxInput .arrowUp,
+.arrowDown {
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+    color: #3bb77e;
+    font-size: 1.5rem;
+}
+
+.productInfo .wrapWidget .boxInput .arrowUp {
+    top: 3px;
+}
+
+.productInfo .wrapWidget .boxInput .arrowDown {
+    bottom: 3px;
+}
+
+.productInfo .wrapWidget .btnAddCart {
+    width: 160px;
+    border-radius: 5px;
+    border: none;
+    background-color: #3bb77e;
+    color: #fff;
+    font-weight: 700;
+    margin-left: 15px;
+    transition: all linear 0.3s;
+}
+
+.productInfo .wrapWidget .btnAddCart:hover {
+    filter: brightness(0.9);
+}
+
+.productInfo .wrapWidget .btnWishlist,
+.btnComapre {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #f1f1f1;
+    border-radius: 5px;
+    margin-left: 10px;
+    color: #3bb77e;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all linear 0.2s;
+}
+
+.productInfo .wrapWidget .btnWishlist:hover,
+.btnComapre:hover {
+    color: #fff;
+    background-color: #3bb77e;
+    transform: translateY(-6px);
+}
+
+.detailProduct .wrapSidebar {
+    margin-left: 100px;
+}
+
+.detailProduct .wrapTabs {
+    width: 100%;
+    margin: 40px 70px;
+    border: 1px solid #ececec;
+    border-radius: 15px;
+    padding: 40px 50px;
+}
+
+.wrapTabs .listTabs {
+    display: flex;
+}
+
+.wrapTabs .listTabs .itemTabs {
+    margin: 0 10px;
+    font-size: 1.6rem;
+    border-radius: 30px;
+    border: 1px solid #ececec;
+    background: #fff;
+    color: #7e7e7e;
+    font-weight: 700;
+    padding: 10px 30px;
+    cursor: pointer;
+    transition: all linear 0.2s;
+}
+
+.wrapTabs .listTabs .itemTabs:hover {
+    color: #3bb77e;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.05);
+    transform: translateY(-5px);
+}
+
+.tabContent .wrapContentTab {
+    margin-top: 50px;
+}
+
+.tabContent .line {
+    border-top: 1px solid #dfdfdf;
+    margin: 20px 0;
+    display: block;
+}
+
+.tabContent h3 {
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: #253d4e;
+    margin-top: 20px;
+}
+
+.tabContent h4 {
+    font-size: 1.4rem;
+    color: #7e7e7e;
+    font-weight: unset;
+    padding-left: 20px;
+    line-height: 2;
+}
+
+.tabContent p {
+    font-size: 1.6rem;
+    color: #7e7e7e;
+}
+
+.wrapTable {
+    margin-top: 40px;
+}
+.wrapTable table {
+    width: 100%;
+    color: #7e7e7e;
+}
+
+table td p {
+    margin: 0;
+}
+
+table td,
+table th {
+    padding: 10px 20px;
+    border: 1px solid #ececec;
+    vertical-align: middle;
+}
+
+table th {
+    font-weight: 500;
+}
+
+.tabContent .wrapBrand {
+    display: flex;
+    margin-top: 40px;
+}
+
+.tabContent .wrapBrand .brandInfo {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+}
+
+.tabContent .wrapBrand .brandInfo a {
+    color: #3bb77e;
+    font-weight: 700;
+    font-size: 1.6rem;
+}
+
+.addressBrand .iconAddress {
+    margin-right: 10px;
+    color: #3bb77e;
+}
+
+.addressBrand span {
+    font-weight: 500;
+    color: #333;
+}
+
+.addressBrand .address {
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+.ratingShop {
+    margin-top: 40px;
+    margin-left: -22px;
+}
+
+.ratingShop ul {
+    display: flex;
+}
+
+.ratingShop ul li {
+    margin: 0 20px;
+}
+
+.ratingShop ul li span {
+    display: block;
+}
+
+.ratingShop ul li .title {
+    font-size: 1.3rem;
+    color: #3bb77e;
+}
+
+.ratingShop ul li .percent {
+    font-size: 2.3rem;
+    color: #333;
+    font-weight: 700;
+}
+
+.tabContent .wrapComment {
+    border: 1px solid #f2f2f2;
+    border-radius: 15px;
+    padding: 20px;
+    width: 70%;
+    margin: 40px 12px;
+    transition: all linear 0.1s;
+}
+
+.tabContent .wrapComment:hover {
+    transform: translateY(-5px);
+}
+
+.cardComment {
+    display: flex;
+    column-gap: 30px;
+}
+
+.wrapInfoUser {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.wrapComment .circleBox {
+    border: 1px solid #333;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    overflow: hidden;
+}
+
+.wrapComment .cardComment .imgUser {
+    width: 100%;
+}
+
+.wrapInfoUser .nameUser {
+    color: #3bb77e;
+    font-weight: 700;
+}
+
+.desComment .dateAndRating {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex: 1;
+}
+
+.desComment .dateAndRating .dateTime {
+    font-size: 1.3rem;
+    color: #b6b6b6;
+}
+
+.textComment {
+    margin-top: 10px;
+}
+
+.wrapAddComment {
+    margin: 0 12px;
+    width: 70%;
+}
+
+.wrapAddComment .commentBox {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #f0e9ff;
+    border-radius: 10px;
+    font-size: 1.6rem;
+}
+
+.btnAddComment {
+    color: #fff;
+    padding: 15px 40px;
+    font-weight: 500;
+    font-size: 1.6rem;
+    background-color: #3bb77e;
+    border: 1px solid #29a56c;
+    border-radius: 10px;
+    transition: all linear 0.2s;
+}
+
+.btnAddComment:hover {
+    filter: brightness(0.9);
+}
+
+.ratingComment {
+    margin: 5px 0 15px 0;
+}

@@ -1,0 +1,211 @@
+header {
+    width: 100%;
+    height: 100%;
+    padding: 35px 0;
+}
+
+header .container-fluid {
+    padding: 0px 40px;
+}
+
+.logo {
+    width: 180px;
+}
+
+.headerSearch {
+    width: 100%;
+    border: 1px solid #bce3c9;
+    height: 50px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+}
+
+.selectDrop {
+    height: 100%;
+    line-height: 50px;
+    padding-left: 10px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    cursor: pointer;
+    position: relative;
+    width: 30%;
+}
+
+.selectDrop span {
+    display: inline-block;
+    width: 80%;
+}
+.selectDrop::after {
+    position: absolute;
+    content: '';
+    background-color: #cacaca;
+    top: 50%;
+    width: 1px;
+    height: 20px;
+    right: 0;
+    transform: translateY(-50%);
+}
+
+.headerSearch .search {
+    width: 65%;
+}
+
+.headerSearch .search input {
+    width: 90%;
+    border: none;
+    outline: none;
+    margin-left: 15px;
+    font-size: 1.4rem;
+}
+
+.headerSearch .iconSearch {
+    cursor: pointer;
+    font-size: 1.8rem;
+    color: #909090;
+}
+
+.itemList {
+    list-style: none;
+    position: absolute;
+    left: 0;
+    border: 1px solid;
+    width: 100%;
+    max-height: 210px;
+    overflow-y: scroll;
+    padding: 0;
+    line-height: 1.5rem;
+    border: 1px solid #ececec;
+    min-width: 200px;
+    border-radius: 4px;
+    background-color: #fff;
+    z-index: 1;
+}
+
+.itemList::-webkit-scrollbar {
+    width: 5px;
+}
+
+.itemList::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 50px;
+}
+
+.itemList li {
+    padding: 10px;
+    color: #7e7e7e;
+}
+
+.active {
+    background-color: #ececec;
+}
+
+.itemList li:hover {
+    background-color: #9ddbc9;
+}
+
+.active:hover {
+    background-color: #ececec !important;
+}
+
+.wrapperTabList {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    justify-content: flex-end;
+}
+
+.headerTabsList {
+    list-style: none;
+    font-size: 1.5rem;
+    color: #7e7e7e;
+    display: flex;
+    margin: 0;
+}
+
+.headerTabsItem {
+    position: relative;
+    cursor: pointer;
+    margin-left: 22px;
+    z-index: 1;
+}
+
+.headerTabsItem span {
+    position: absolute;
+    top: -8px;
+    left: 13px;
+    background-color: #3bb77e;
+    font-size: 1.3rem;
+    border-radius: 100%;
+    height: 18px;
+    width: 18px;
+    text-align: center;
+    line-height: 18px;
+    color: #fff;
+    font-weight: 500;
+}
+
+.icon {
+    font-size: 2.6rem;
+    color: #333;
+    margin-right: 5px;
+}
+
+.listUser {
+    margin-top: 8px;
+    list-style: none;
+    background-color: #fff;
+    padding: 20px 20px 5px;
+    border-radius: 10px;
+    border: 1px solid #ececec;
+    width: 200px;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    font-size: 1.4rem;
+    color: #253d4e;
+    cursor: default;
+    animation: mymove linear 0.2s;
+    display: none;
+}
+
+@keyframes mymove {
+    from {
+        transform: translateY(10px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.listUser::after {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 20px;
+    background-color: transparent;
+    top: -15px;
+    left: 0;
+}
+
+.listUser li {
+    margin-bottom: 20px;
+    transition: linear 0.2s;
+    cursor: pointer;
+}
+
+.listUser li:hover {
+    color: #3bb77e;
+}
+
+.iconListUser {
+    width: 15px;
+    height: 15px;
+    margin-right: 10px;
+}
+
+.headerTabsItem.user:hover .listUser {
+    display: block;
+}

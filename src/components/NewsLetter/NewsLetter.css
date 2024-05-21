@@ -1,0 +1,21 @@
+.newsLetterTitle {
+    font-size: 4rem;
+    color: #253d4e;
+    font-weight: 500;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.newsLetterDes {
+    font-size: 1.8rem;
+    color: #7e7e7e;
+}
+
+.newsLetterBrand {
+    color: #3bb777;
+    font-weight: 500;
+}
+
+.wrapInfoSlider.newsLetter .inputSlider {
+    margin-top: 30px;
+}

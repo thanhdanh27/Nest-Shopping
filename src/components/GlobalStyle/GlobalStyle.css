@@ -1,0 +1,39 @@
+@import 'normalize.css';
+@import 'bootstrap/dist/css/bootstrap.min.css';
+
+:root {
+    --primary-color: #3bb77e;
+}
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    outline: none;
+}
+html {
+    font-size: 62.5%;
+}
+body {
+    font-size: 1.5rem;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+@keyframes mymove {
+    from {
+        transform: translateY(10px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}

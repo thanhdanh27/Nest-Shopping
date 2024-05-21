@@ -1,0 +1,208 @@
+.wrapFooter {
+    margin: 40px 40px 30px 40px;
+}
+
+.bgUrl {
+    height: 430px;
+    background: url('../../assets/img/bgUrl.png') no-repeat center;
+    border-radius: 20px;
+    background-size: cover;
+    position: relative;
+}
+
+.wrapNewsLetter .info {
+    width: 60%;
+}
+
+.wrapNewsLetter .img {
+    width: 40%;
+    position: absolute;
+    right: 40px;
+    bottom: 0;
+}
+
+.wrapBoxFooter {
+    background-color: #f4f6fa;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.wrapBoxFooter img {
+    width: 60px;
+    height: 60px;
+    transition: all ease-in-out 0.2s;
+}
+
+.wrapBoxFooter:hover img {
+    transform: translateY(-5px);
+}
+
+.wrapBoxFooter .boxInfor {
+    margin-left: 20px;
+}
+
+.wrapBoxFooter .boxInfor h4 {
+    color: #242424;
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.wrapBoxFooter .boxInfor span {
+    color: #adadad;
+    font-size: 1.6rem;
+}
+
+.footerMid {
+    margin-top: 50px;
+}
+
+.footerMid .wrapFooterMid h4 {
+    margin-top: 20px;
+    font-size: 1.7rem;
+    color: #253d4e;
+    font-weight: 400;
+    margin-bottom: 30px;
+}
+
+.wrapFooterMid .infoMidFooter .wrapInfoMidFooter {
+    display: flex;
+    margin-bottom: 15px;
+}
+
+.wrapFooterMid .infoMidFooter .wrapInfoMidFooter .address {
+    margin: 0;
+    font-size: 1.5rem;
+    color: #253d4e;
+    margin-left: 10px;
+}
+
+.wrapFooterMid .infoMidFooter .wrapInfoMidFooter .address span {
+    font-weight: bold;
+}
+
+.wrapFooterMid .infoMidFooter .wrapInfoMidFooter .iconFooter {
+    color: #20c997;
+    width: 17px;
+    height: 17px;
+}
+
+.wrapFooterWidget .footerWidgetHeading {
+    padding: 20px 0;
+    font-size: 2.4rem;
+    color: #253d4d;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.wrapFooterWidget .listFooterWidget .footerWidgetItems {
+    font-size: 1.5rem;
+    color: #253d4e;
+    font-weight: 400;
+    margin-bottom: 15px;
+    transition: all ease-in-out 0.2s;
+    cursor: pointer;
+}
+
+.wrapFooterWidget .listFooterWidget .footerWidgetItems:hover {
+    color: #20c997;
+    transform: translateX(4px);
+}
+
+.footerEnd {
+    border-top: 1px solid #bce3c9;
+    margin-top: 40px;
+    padding: 30px 0 0 0;
+}
+
+.footerEnd .footerOrgan .textBrand {
+    color: #20c997;
+    font-weight: 700;
+}
+
+.footerEnd .footerOrgan {
+    color: #7e7e7e;
+    font-size: 1.4rem;
+}
+
+.footerEnd .contact {
+    display: flex;
+}
+
+.footerEnd .contact .contactNum {
+    display: flex;
+    align-items: center;
+    margin-right: 40px;
+}
+
+.footerEnd .contact .iconContact {
+    font-size: 3rem;
+    color: #20c997;
+    margin-right: 15px;
+}
+
+.footerEnd .contact .infoContact h3 {
+    color: #20c997;
+    font-size: 2.6rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.footerEnd .contact .infoContact span {
+    font-size: 1.3rem;
+    color: #7e7e7e;
+    padding-left: 5px;
+}
+
+.footerEnd .contact .infoContact {
+    line-height: 10px;
+}
+
+/* .footerEnd .social {
+    display: flex;
+    align-items: center;
+} */
+
+.footerEnd .social span {
+    color: #253d4e;
+    font-weight: 700;
+    margin-right: 10px;
+}
+
+.footerEnd .social .saleUpText {
+    font-size: 1.4rem;
+    color: #7e7e7e;
+    font-weight: 400;
+    margin-top: 5px;
+}
+
+.footerEnd .social .wrapSocial {
+    display: inline-flex;
+}
+
+.footerEnd .social .wrapSocial .circleBox {
+    width: 30px;
+    height: 30px;
+    background-color: #20c997;
+    border-radius: 50%;
+    line-height: 30px;
+    text-align: center;
+    margin: 0 3px;
+    cursor: pointer;
+    transition: all ease-in-out 0.2s;
+}
+
+.footerEnd .social .wrapSocial .circleBox:hover {
+    transform: translateY(-3px);
+}
+
+.footerEnd .social .wrapSocial .circleBox .iconSocial {
+    color: #fff;
+}
+
+.footerEnd .row .col.part3 {
+    display: inline-flex;
+    justify-content: right;
+}

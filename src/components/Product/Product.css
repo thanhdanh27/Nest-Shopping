@@ -1,0 +1,220 @@
+.productThumb {
+    width: 100%;
+    height: auto;
+    background-color: #fff;
+    border: 1px solid #ececec;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: all ease-in-out 0.3s;
+}
+
+.productThumb:hover {
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.05);
+    border: 1px solid #bce3c9;
+}
+
+.productThumb .productImg {
+    transition: all ease-in-out 0.3s;
+    width: 330px;
+    height: 350px;
+    transform: scale(0.6);
+}
+
+.productThumb:hover .productImg {
+    transform: scale(0.8);
+}
+
+.productThumb .wrapProductImg {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.productThumb .productInfo {
+    margin: 0 20px 20px 20px;
+}
+
+.productInfo .productTitle {
+    height: 38px;
+}
+
+.productThumb .productInfo .productType {
+    color: #adadad;
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: block;
+    margin-bottom: 8px;
+}
+.productThumb .productInfo .productTitle {
+    color: #253d4d;
+    font-size: 1.6rem;
+    cursor: pointer;
+    transition: all linear 0.2s;
+    -webkit-line-clamp: 2;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.productThumb .productInfo .productTitle:hover {
+    color: var(--primary-color);
+}
+
+.productThumb .productInfo .productBrand {
+    font-size: 1.4rem;
+    color: #b6b6b6 !important;
+    margin-bottom: 8px;
+}
+
+.productThumb .productInfo .productBrand a {
+    color: var(--primary-color);
+    transition: all linear 0.2s;
+}
+
+.productThumb .productInfo .productBrand a:hover {
+    color: #fdc040;
+}
+
+.productPrice {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.productPrice .newPrice {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #3bb77e;
+}
+
+.productPrice .oldPrice {
+    font-size: 1.4rem;
+    color: #adadad;
+    margin: 0 0 0 7px;
+    text-decoration: line-through;
+    margin-left: 12px;
+    font-weight: bold;
+}
+
+.productPrice .btnAddProduct {
+    background-color: #def9ec;
+    border: none;
+    border-radius: 4px;
+    padding: 6px 12px 6px 12px;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    align-items: center;
+}
+
+.productPrice .iconAddProduct {
+    margin-right: 8px;
+    font-size: 1.8rem;
+}
+
+.productPrice .btnAddProduct:hover {
+    background-color: var(--primary-color);
+    color: #fff;
+    transition: all linear 0.2s;
+    transform: translateY(-3px);
+}
+
+.productOverplay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+    animation: showOverlay ease-in-out 0.3s;
+}
+
+.productOverplay ul {
+    background-color: #fff;
+    height: auto;
+    border-radius: 5px;
+    border: 1px solid #bce3c9;
+}
+
+.productOverplay ul li {
+    width: 40px;
+    height: 36px;
+    display: inline-block;
+    line-height: 36px;
+    text-align: center;
+    border-right: 1px solid #bce3c9;
+    position: relative;
+}
+
+.productOverplay ul li:last-child {
+    border-right: none;
+}
+.productOverplay ul li a {
+    display: block;
+    color: var(--primary-color);
+    transition: all linear 0.2s;
+}
+
+.productOverplay ul li a:hover {
+    color: #fdc040;
+}
+
+.tooltiptext {
+    display: none;
+    width: 85px;
+    height: 27px;
+    background-color: #3bb77e;
+    color: #fff;
+    line-height: 27px;
+    border-radius: 6px;
+    position: absolute;
+    z-index: 1;
+    top: -35px;
+    transform: translateX(-50%);
+    font-size: 11px;
+    animation: showToolTip ease 0.3s;
+}
+
+.tooltiptext::after {
+    content: '';
+    position: absolute;
+    top: 95%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #3bb77e transparent transparent transparent;
+}
+
+.productOverplay ul li:hover .tooltiptext {
+    display: inline-block;
+}
+
+.productThumb:hover .productOverplay {
+    display: inline-flex;
+}
+
+@keyframes showToolTip {
+    from {
+        opacity: 0;
+        transform: translate(-50%, 30%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+}
+
+@keyframes showOverlay {
+    from {
+        opacity: 0;
+    }
+    top {
+        opacity: 1;
+    }
+}
