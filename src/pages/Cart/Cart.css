@@ -1,0 +1,209 @@
+.manageCart {
+    padding-left: 40px;
+    margin-top: 50px;
+    padding-right: 20px;
+}
+
+.titleManageCart {
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.titleManageCart p:last-child {
+    color: #b6b6b6;
+    cursor: pointer;
+}
+
+.manageCart h1 {
+    font-size: 4.8rem;
+    font-weight: 700;
+    color: #253d4e;
+}
+
+.manageCart p {
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: #7e7e7e;
+}
+
+.manageCart p span {
+    color: #3bb77e;
+    font-weight: 500;
+}
+
+.manageCart .row {
+    margin-top: 30px;
+}
+
+table tbody tr {
+    border-bottom: 1px solid #e9ecef;
+}
+
+table thead {
+    border: 1px solid #e9ecef;
+    background-color: #e9ecef;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.manageCart table td,
+table th {
+    border: none;
+}
+
+.manageCart table .tdProduct .wrapImgCart {
+    width: 120px;
+    height: 120px;
+    border-radius: 10px;
+    margin-right: 15px;
+    border: 1px solid#ececec;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.manageCart table .tdProduct .wrapImgCart img {
+    width: 100px;
+    height: 110px;
+    transform: scale(0.8);
+}
+
+.manageCart table .tdProduct {
+    display: flex;
+    min-width: 400px;
+    align-items: center;
+}
+
+.manageCart table .tdProduct a {
+    color: #253d4e;
+    font-size: 1.6rem;
+    font-weight: 500;
+    display: block;
+    transition: all linear 0.2s;
+    width: 210px;
+}
+
+.manageCart table .tdProduct a:hover {
+    color: #ffc107;
+}
+
+.manageCart table .tdUnitPrice {
+    min-width: 110px;
+}
+
+.boxInput {
+    width: 100px;
+    padding: 10px 25px 10px 30px;
+    border-radius: 5px;
+    border: 2px solid #3bb77e;
+    position: relative;
+}
+
+.boxInput input {
+    border: none;
+    width: 70%;
+    font-size: 1.7rem;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.boxInput .arrowUp,
+.arrowDown {
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+    color: #3bb77e;
+    font-size: 1.5rem;
+}
+
+.boxInput .arrowUp {
+    top: 3px;
+}
+
+.boxInput .arrowDown {
+    bottom: 3px;
+}
+
+table .tdRemove {
+    text-align: center;
+    color: red;
+}
+
+table .tdTotalPrice {
+    font-size: 2.4rem;
+    color: #3bb77e;
+    font-weight: 700;
+    text-align: center;
+}
+
+table .tdUnitPrice {
+    font-size: 2.4rem;
+    color: #7e7e7e;
+    font-weight: 700;
+    text-align: center;
+}
+
+.manageCart .cardCheckOut {
+    width: 100%;
+    border-radius: 15px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.05);
+    border: 1px solid #ececec;
+    padding: 20px 20px 35px 20px;
+}
+
+.manageCart .wrapCardCheckOut {
+    padding-left: 20px;
+}
+
+.cardCheckOut .cardContent {
+    border: 1px solid #ececec;
+    padding: 10px 10px;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    align-items: center;
+    border-radius: 6px;
+}
+
+.cardCheckOut .cardContent span:first-child {
+    color: #b6b6b6;
+    font-size: 1.7rem;
+    font-weight: 500;
+}
+
+.cardCheckOut .cardContent span:last-child {
+    color: #3bb77e;
+    font-size: 2.4rem;
+    font-weight: 700;
+}
+
+.cardCheckOut .cardContent span.word {
+    color: #253d4e;
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+.cardCheckOut .btnCheckout {
+    background-color: #3bb77e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 0;
+    border-radius: 6px;
+    color: #fff;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all linear 0.3s;
+}
+
+.cardCheckOut .btnCheckout:hover {
+    background-color: #ffc107;
+}
+
+.cardCheckOut .btnCheckout span {
+    margin-right: 12px;
+}

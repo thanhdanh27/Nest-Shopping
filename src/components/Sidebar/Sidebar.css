@@ -70,6 +70,7 @@
     line-height: 1.5;
     font-weight: 500;
     transition: all ease-in-out 0.3s;
+    text-transform: capitalize;
 }
 
 .cardBars .quantityCardBars {
@@ -161,4 +162,8 @@
     background-repeat: no-repeat;
     background-position: 135px 320px;
     background-size: 55%;
+}
+.starRating {
+    color: #fdc040;
+    margin-left: 5px;
 }

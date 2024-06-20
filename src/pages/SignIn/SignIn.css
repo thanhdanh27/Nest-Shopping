@@ -1,0 +1,91 @@
+.signInWrapper {
+    padding: 50px 0;
+}
+
+.signInWrapper .card h3 {
+    font-size: 3rem;
+    margin-bottom: 25px;
+}
+
+.signInWrapper .card h3 p {
+    font-size: 1.4rem;
+    margin-top: 10px;
+    color: #7e7e7e;
+    font-weight: 400;
+}
+
+.signInWrapper .card h3 p a {
+    color: #3bb77e;
+    font-weight: 500;
+    transition: all linear 0.2s;
+}
+
+.signInWrapper .card h3 p a:hover {
+    color: #fdc040;
+}
+
+.signInWrapper .card {
+    margin: auto;
+    width: 600px;
+    border: none;
+    padding: 20px;
+}
+
+.signInWrapper form .form-group {
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.signInWrapper form input {
+    font-size: 1.6rem;
+}
+
+.signInWrapper form .form-group #password {
+    width: 90%;
+}
+
+.signInWrapper form .form-group .MuiFormLabel-root {
+    font-size: 1.2rem;
+}
+
+.signInWrapper form .form-group .iconShowPassword {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 10px;
+    cursor: pointer;
+}
+
+.signInWrapper form .form-group button {
+    width: 100%;
+    background-color: #3bb77e;
+    padding: 10px;
+    border: none;
+    color: #fff;
+    font-weight: 500;
+    border-radius: 6px;
+    transition: all ease-in-out 0.2s;
+}
+
+.signInWrapper form .form-group button .googleIcon {
+    width: 30px;
+    height: 30px;
+}
+
+.signInWrapper form .form-group button:active {
+    filter: brightness(0.9);
+}
+
+.signInWrapper form .form-group .signInGoogle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    color: #253d4e;
+    border: 1px solid #ccc;
+}
+
+.signInWrapper form .form-group .signInGoogle p {
+    margin-left: 15px;
+    text-transform: uppercase;
+}

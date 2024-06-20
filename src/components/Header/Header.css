@@ -130,6 +130,10 @@ header .container-fluid {
     z-index: 1;
 }
 
+.headerTabsItem a {
+    color: #7e7e7e;
+}
+
 .headerTabsItem span {
     position: absolute;
     top: -8px;
@@ -208,4 +212,18 @@ header .container-fluid {
 
 .headerTabsItem.user:hover .listUser {
     display: block;
+}
+
+.headerTabsItem .btnSigIn {
+    border: none;
+    background-color: #3bb77e;
+    color: #fff;
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-weight: 500;
+    transition: all linear 0.2s;
+}
+
+.headerTabsItem .btnSigIn:hover {
+    filter: brightness(0.9);
 }

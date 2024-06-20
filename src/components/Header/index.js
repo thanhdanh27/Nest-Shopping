@@ -2,11 +2,12 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons/faSearch';
 import Logo from '../../assets/logo.svg';
 import './Header.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { faCartShopping, faChevronDown, faGear, faSignOut } from '@fortawesome/free-solid-svg-icons';
 import { faHeart, faMap, faUser } from '@fortawesome/free-regular-svg-icons';
-import { faTicket } from '@fortawesome/free-solid-svg-icons/faTicket';
 import Navbar from '../Navbar';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 function Header(props) {
     const listIems = [
@@ -25,6 +26,22 @@ function Header(props) {
     const [name, setName] = useState('All Categories');
     const [check, setCheck] = useState(false);
     const [selected, setSelected] = useState(0);
+
+    const [cartItemLength, setCartItemsLength] = useState([]);
+
+    useEffect(() => {
+        getDataCart('http://localhost:3000/cartItems');
+    }, [props.cartItem, props.itemCartDelete]);
+
+    const getDataCart = async (url) => {
+        try {
+            await axios.get(url).then((response) => {
+                setCartItemsLength(response.data);
+            });
+        } catch (error) {
+            console.log(error.message);
+        }
+    };
 
     return (
         <>
@@ -85,12 +102,20 @@ function Header(props) {
                                     </li>
 
                                     <li className="headerTabsItem">
-                                        <span className="numberItem">1</span>
-                                        <FontAwesomeIcon className="icon" icon={faCartShopping} />
-                                        Cart
+                                        <a href="/cart">
+                                            <span className="numberItem">{cartItemLength.length}</span>
+                                            <FontAwesomeIcon className="icon" icon={faCartShopping} />
+                                            Cart
+                                        </a>
                                     </li>
 
-                                    <li className="headerTabsItem user">
+                                    <li className="headerTabsItem">
+                                        <Link className="d-block" to="/signin">
+                                            <button className="btnSigIn">Sign In</button>
+                                        </Link>
+                                    </li>
+
+                                    {/* <li className="headerTabsItem user">
                                         <FontAwesomeIcon className="icon" icon={faUser} />
                                         Account
                                         <ul className="listUser">
@@ -119,7 +144,7 @@ function Header(props) {
                                                 Log out
                                             </li>
                                         </ul>
-                                    </li>
+                                    </li> */}
                                 </ul>
                             </div>
                         </div>

@@ -54,13 +54,13 @@ ul.breadcrumb li.active {
     margin-left: 5px;
 }
 
-.detailProduct .productInfo .wrapPrice .newPrice {
+.detailProduct .productInfo .wrapPrices .newPrice {
     color: #3bb77e;
     font-size: 5.8rem;
     font-weight: 700;
 }
 
-.detailProduct .productInfo .wrapPrice span.oldPrice {
+.detailProduct .productInfo .wrapPrices span.oldPrice {
     color: #b6b6b6;
     font-size: 2.8rem;
     font-weight: 700;
@@ -69,7 +69,7 @@ ul.breadcrumb li.active {
     position: relative;
 }
 
-.detailProduct .productInfo .wrapPrice .salePercent {
+.detailProduct .productInfo .wrapPrices .salePercent {
     position: absolute;
     top: -12px;
     left: 0;
@@ -409,6 +409,11 @@ table th {
 .wrapInfoUser .nameUser {
     color: #3bb77e;
     font-weight: 700;
+    text-transform: capitalize;
+}
+
+.desComment {
+    flex: 1;
 }
 
 .desComment .dateAndRating {
@@ -458,4 +463,23 @@ table th {
 
 .ratingComment {
     margin: 5px 0 15px 0;
+}
+
+.productRelated {
+    padding: 0 80px !important;
+}
+
+.productRelated h2 {
+    color: #253d4e;
+    font-weight: 700;
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+}
+
+.productRelated .slick-slide {
+    padding-right: 20px;
+}
+
+.productRelated .slick-arrow.slick-prev {
+    left: 1%;
 }

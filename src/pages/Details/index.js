@@ -1,26 +1,22 @@
 import './Details.css';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import Rating from '@mui/material/Rating';
 import InnerImageZoom from 'react-inner-image-zoom';
 import 'react-inner-image-zoom/lib/InnerImageZoom/styles.css';
 import { useRef, useState, useEffect } from 'react';
 import Slider from 'react-slick';
+import Product from '../../components/Product';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-    faCaretDown,
-    faCaretUp,
-    faCartShopping,
-    faCodeCompare,
-    faHeadphones,
-    faLocationDot,
-} from '@fortawesome/free-solid-svg-icons';
+import { faCartShopping, faCodeCompare, faHeadphones, faLocationDot } from '@fortawesome/free-solid-svg-icons';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
-import Sidebar from '../../components/Sidebar';
+import axios from 'axios';
+import QuantityBox from '../../components/QuantityBox';
 
-function DetailsPage() {
+//import Sidebar from '../../components/Sidebar';
+
+function DetailsPage(props) {
     const [idChoose, setIdChoose] = useState(0);
-    const [valueInput, setValueInput] = useState(1);
-    const sizeChart = ['50g', '60g', '80g', '100g'];
+
     var settings = {
         dots: false,
         infinite: true,
@@ -30,6 +26,17 @@ function DetailsPage() {
         fade: false,
         arrows: true,
     };
+
+    var settings1 = {
+        dots: false,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 5,
+        slidesToScroll: 1,
+        fade: false,
+        arrows: true,
+    };
+
     var settings2 = {
         dots: false,
         infinite: true,
@@ -51,17 +58,109 @@ function DetailsPage() {
         setNav2(sliderRef2);
     }, []);
 
-    const handlePlus = () => {
-        setValueInput(valueInput + 1);
-    };
-
-    const handleMinus = () => {
-        if (valueInput === -1) {
-            setValueInput(0);
-        } else setValueInput(valueInput - 1);
-    };
-
     const [activeTab, setActiveTab] = useState(0);
+
+    const { id } = useParams();
+    const [currentProduct, setCurrentProduct] = useState([]);
+    const [productReviews, setProductReviews] = useState([]);
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+        setProductReviews(props.reviews);
+        props.data.length !== 0 &&
+            props.data.forEach((item) => {
+                item.items.length !== 0 &&
+                    item.items.forEach((item_) => {
+                        item_.products.length !== 0 &&
+                            item_.products.forEach((currentItem) => {
+                                if (currentItem.id === parseInt(id)) {
+                                    setCurrentProduct(currentItem);
+                                }
+                            });
+                    });
+            });
+    }, [id]);
+
+    const [nameBreadCrumb, setNameBreadCrumb] = useState([]);
+    useEffect(() => {
+        const objName = {};
+        props.data.length !== 0 &&
+            props.data.forEach((item) => {
+                item.items.forEach((item_) => {
+                    item_.products.forEach((item__) => {
+                        if (item__.id === +id) {
+                            objName.catName = item.cat_name;
+                            objName.childName = item_.cat_name;
+                            objName.nameProduct = item__.productName;
+                        }
+                    });
+                });
+            });
+        setNameBreadCrumb(objName);
+    }, []);
+
+    const [relatedProduct, setRelatedProduct] = useState([]);
+    const arrRelatedProducts = [];
+    useEffect(() => {
+        props.data.length !== 0 &&
+            props.data.forEach((item) => {
+                if (item.cat_name === nameBreadCrumb.catName) {
+                    item.items.forEach((item_) => {
+                        item_.products.forEach((product) => {
+                            arrRelatedProducts.push(product);
+                        });
+                    });
+                }
+            });
+        setRelatedProduct(arrRelatedProducts);
+    }, [nameBreadCrumb.catName]);
+
+    const [fieldReview, setFieldReview] = useState({
+        productId: 0,
+        name: 'danh',
+        rating: 0.0,
+        comment: '',
+        date: '',
+    });
+    const onInputComment = (name, value) => {
+        setFieldReview((prev) => ({
+            ...prev,
+            productId: parseInt(id),
+            [name]: value,
+            date: new Date().toLocaleString(),
+        }));
+    };
+
+    const handleSubmitReview = async (e) => {
+        e.preventDefault();
+
+        try {
+            await axios.post('http://localhost:3000/productReviews', fieldReview);
+        } catch (err) {
+            console.log(err.message);
+        }
+
+        showReviews();
+    };
+
+    const arr_reviews = [];
+    const showReviews = async () => {
+        try {
+            await axios.get('http://localhost:3000/productReviews').then((response) => {
+                if (response.data.length !== 0) {
+                    response.data.forEach((item) => {
+                        arr_reviews.push(item);
+                    });
+                }
+            });
+        } catch (err) {
+            console.log(err.message);
+        }
+
+        if (arr_reviews.length !== 0) {
+            setProductReviews(arr_reviews);
+        }
+    };
 
     return (
         <div className="detailsPage">
@@ -69,14 +168,32 @@ function DetailsPage() {
                 <div className="container-fluid">
                     <ul class="breadcrumb">
                         <li>
-                            <Link to="#">Home</Link>
+                            <Link to="/">Home</Link>
                         </li>
 
                         <li>
-                            <Link to="#">Vegetables & tubers</Link>
+                            <a
+                                href={`/cat/${
+                                    nameBreadCrumb.catName !== undefined && nameBreadCrumb.catName.toLowerCase()
+                                }`}
+                            >
+                                {nameBreadCrumb.catName}
+                            </a>
                         </li>
 
-                        <li class="active">Seeds Of Change Organic</li>
+                        <li>
+                            <a
+                                href={`/cat/${
+                                    nameBreadCrumb.catName !== undefined && nameBreadCrumb.catName.toLowerCase()
+                                }/${
+                                    nameBreadCrumb.childName !== undefined &&
+                                    nameBreadCrumb.childName.replace(/\s/g, '-').toLowerCase()
+                                }`}
+                            >
+                                {nameBreadCrumb.childName}
+                            </a>
+                        </li>
+                        <li className="active">{nameBreadCrumb.nameProduct}</li>
                     </ul>
                 </div>
             </div>
@@ -88,61 +205,14 @@ function DetailsPage() {
                             <div style={{ padding: '0 30px 0 80px' }} className="col-7">
                                 <div className="wrapZoomImg">
                                     <Slider {...settings2} asNavFor={nav2} ref={(slider) => (sliderRef1 = slider)}>
-                                        <div className="item">
-                                            <InnerImageZoom
-                                                zoomType="hover"
-                                                zoomScale={1}
-                                                src="https://wp.alithemes.com/html/nest/demo/assets/imgs/shop/product-16-6.jpg"
-                                            />
-                                        </div>
-
-                                        <div className="item">
-                                            <InnerImageZoom
-                                                zoomType="hover"
-                                                zoomScale={1}
-                                                src="https://wp.alithemes.com/html/nest/demo/assets/imgs/shop/thumbnail-2.jpg"
-                                            />
-                                        </div>
-
-                                        <div className="item">
-                                            <InnerImageZoom
-                                                zoomType="hover"
-                                                zoomScale={1}
-                                                src="https://wp.alithemes.com/html/nest/demo/assets/imgs/shop/thumbnail-3.jpg"
-                                            />
-                                        </div>
-
-                                        <div className="item">
-                                            <InnerImageZoom
-                                                zoomType="hover"
-                                                zoomScale={1}
-                                                src="https://wp.alithemes.com/html/nest/demo/assets/imgs/shop/thumbnail-4.jpg"
-                                            />
-                                        </div>
-
-                                        <div className="item">
-                                            <InnerImageZoom
-                                                zoomType="hover"
-                                                zoomScale={1}
-                                                src="https://wp.alithemes.com/html/nest/demo/assets/imgs/shop/thumbnail-5.jpg"
-                                            />
-                                        </div>
-
-                                        <div className="item">
-                                            <InnerImageZoom
-                                                zoomType="hover"
-                                                zoomScale={1}
-                                                src="https://wp.alithemes.com/html/nest/demo/assets/imgs/shop/thumbnail-6.jpg"
-                                            />
-                                        </div>
-
-                                        <div className="item">
-                                            <InnerImageZoom
-                                                zoomType="hover"
-                                                zoomScale={1}
-                                                src="https://wp.alithemes.com/html/nest/demo/assets/imgs/shop/thumbnail-7.jpg"
-                                            />
-                                        </div>
+                                        {currentProduct.productImages !== undefined &&
+                                            currentProduct.productImages.map((item, index) => {
+                                                return (
+                                                    <div key={index} className="item">
+                                                        <InnerImageZoom zoomType="hover" zoomScale={1} src={item} />
+                                                    </div>
+                                                );
+                                            })}
                                     </Slider>
                                 </div>
 
@@ -154,119 +224,91 @@ function DetailsPage() {
                                     className="zoomSlider"
                                     {...settings}
                                 >
-                                    <div className="item">
-                                        <img
-                                            className="w-100"
-                                            src="https://wp.alithemes.com/html/nest/demo/assets/imgs/shop/product-16-6.jpg"
-                                            alt=""
-                                        />
-                                    </div>
-
-                                    <div className="item">
-                                        <img
-                                            className="w-100"
-                                            src="https://wp.alithemes.com/html/nest/demo/assets/imgs/shop/thumbnail-2.jpg"
-                                            alt=""
-                                        />
-                                    </div>
-
-                                    <div className="item">
-                                        <img
-                                            className="w-100"
-                                            src="https://wp.alithemes.com/html/nest/demo/assets/imgs/shop/thumbnail-3.jpg"
-                                            alt=""
-                                        />
-                                    </div>
-
-                                    <div className="item">
-                                        <img
-                                            className="w-100"
-                                            src="https://wp.alithemes.com/html/nest/demo/assets/imgs/shop/thumbnail-4.jpg"
-                                            alt=""
-                                        />
-                                    </div>
-
-                                    <div className="item">
-                                        <img
-                                            className="w-100"
-                                            src="https://wp.alithemes.com/html/nest/demo/assets/imgs/shop/thumbnail-5.jpg"
-                                            alt=""
-                                        />
-                                    </div>
-
-                                    <div className="item">
-                                        <img
-                                            className="w-100"
-                                            src="https://wp.alithemes.com/html/nest/demo/assets/imgs/shop/thumbnail-6.jpg"
-                                            alt=""
-                                        />
-                                    </div>
-
-                                    <div className="item">
-                                        <img
-                                            className="w-100"
-                                            src="https://wp.alithemes.com/html/nest/demo/assets/imgs/shop/thumbnail-7.jpg"
-                                            alt=""
-                                        />
-                                    </div>
+                                    {currentProduct.productImages !== undefined &&
+                                        currentProduct.productImages.map((item, index) => {
+                                            return (
+                                                <div key={index} className="item">
+                                                    <img className="w-100" src={item} alt="" />
+                                                </div>
+                                            );
+                                        })}
                                 </Slider>
                             </div>
                             <div className="col-5 productInfo">
-                                <h1>Seeds of Change Organic Quinoa, Brown</h1>
+                                <h1>{currentProduct.productName}</h1>
                                 <div className="starReview">
-                                    <Rating name="half-read-only" defaultValue={4.5} precision={0.5} readOnly />
-                                    <span className="numReview">(32 reviews)</span>
+                                    <Rating
+                                        name="half-read-only"
+                                        value={parseFloat(currentProduct.rating)}
+                                        precision={0.5}
+                                        readOnly
+                                    />
+                                    <span className="numReview">{`(${productReviews.length} reviews)`}</span>
                                 </div>
 
-                                <div className="wrapPrice">
-                                    <span className="newPrice">$32</span>
+                                <div className="wrapPrices">
+                                    <span className="newPrice">${currentProduct.price}</span>
                                     <span className="oldPrice">
-                                        $52
-                                        <h4 className="salePercent">26% Off</h4>
+                                        ${currentProduct.oldPrice}
+                                        <h4 className="salePercent">{currentProduct.discount}% Off</h4>
                                     </span>
                                 </div>
-                                <p className="desProduct">
-                                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquam rem officia,
-                                    corrupti reiciendis minima nisi modi, quasi, odio minus dolore impedit fuga eum
-                                    eligendi.
-                                </p>
+                                <p className="desProduct">{currentProduct.description}</p>
                                 <div className="tableSize">
                                     <span>Size / Weight:</span>
                                     <ul>
-                                        {sizeChart.map((item, index) => {
-                                            return (
-                                                <li
-                                                    onClick={() => {
-                                                        setIdChoose(index);
-                                                    }}
-                                                    className={idChoose === index ? 'selected' : ''}
-                                                    key={index}
-                                                >
-                                                    {item}
-                                                </li>
-                                            );
-                                        })}
+                                        {currentProduct.weight !== undefined &&
+                                            currentProduct.weight.length !== 0 &&
+                                            currentProduct.weight.map((item, index) => {
+                                                return (
+                                                    <li
+                                                        onClick={() => {
+                                                            setIdChoose(index);
+                                                        }}
+                                                        className={idChoose === index ? 'selected' : ''}
+                                                        key={index}
+                                                    >
+                                                        {item}
+                                                    </li>
+                                                );
+                                            })}
+
+                                        {currentProduct.RAM !== undefined &&
+                                            currentProduct.RAM.length !== 0 &&
+                                            currentProduct.RAM.map((item, index) => {
+                                                return (
+                                                    <li
+                                                        onClick={() => {
+                                                            setIdChoose(index);
+                                                        }}
+                                                        className={idChoose === index ? 'selected' : ''}
+                                                        key={index}
+                                                    >
+                                                        {item}
+                                                    </li>
+                                                );
+                                            })}
+
+                                        {currentProduct.SIZE !== undefined &&
+                                            currentProduct.SIZE.length !== 0 &&
+                                            currentProduct.SIZE.map((item, index) => {
+                                                return (
+                                                    <li
+                                                        onClick={() => {
+                                                            setIdChoose(index);
+                                                        }}
+                                                        className={idChoose === index ? 'selected' : ''}
+                                                        key={index}
+                                                    >
+                                                        {item}
+                                                    </li>
+                                                );
+                                            })}
                                     </ul>
                                 </div>
 
                                 <div className="wrapWidget">
-                                    <div className="boxInput">
-                                        <input type="number" value={valueInput} />
-                                        <FontAwesomeIcon
-                                            className="arrowUp"
-                                            onClick={() => {
-                                                handlePlus();
-                                            }}
-                                            icon={faCaretUp}
-                                        />
-                                        <FontAwesomeIcon
-                                            className="arrowDown"
-                                            onClick={() => {
-                                                handleMinus();
-                                            }}
-                                            icon={faCaretDown}
-                                        />
-                                    </div>
+                                    <QuantityBox />
 
                                     <button className="btnAddCart">
                                         <FontAwesomeIcon style={{ paddingRight: '12px' }} icon={faCartShopping} />
@@ -317,63 +359,14 @@ function DetailsPage() {
                                             setActiveTab(3);
                                         }}
                                     >
-                                        Reviews
+                                        Reviews ({productReviews.length})
                                     </li>
                                 </ul>
 
                                 {activeTab === 0 && (
                                     <div className="tabContent">
                                         <div className="wrapContentTab">
-                                            <p>
-                                                Uninhibited carnally hired played in whimpered dear gorilla koala
-                                                depending and much yikes off far quetzal goodness and from for grimaced
-                                                goodness unaccountably and meadowlark near unblushingly crucial scallop
-                                                tightly neurotic hungrily some and dear furiously this apart. Spluttered
-                                                narrowly yikes left moth in yikes bowed this that grizzly much hello on
-                                                spoon-fed that alas rethought much decently richly and wow against the
-                                                frequent fluidly at formidable acceptably flapped besides and much circa
-                                                far over the bucolically hey precarious goldfinch mastodon goodness
-                                                gnashed a jellyfish and one however because.
-                                            </p>
-                                            <span className="line"></span>
-                                            <p>
-                                                Laconic overheard dear woodchuck wow this outrageously taut beaver hey
-                                                hello far meadowlark imitatively egregiously hugged that yikes minimally
-                                                unanimous pouted flirtatiously as beaver beheld above forward energetic
-                                                across this jeepers beneficently cockily less a the raucously that magic
-                                                upheld far so the this where crud then below after jeez enchanting
-                                                drunkenly more much wow callously irrespective limpet.
-                                            </p>
-
-                                            <h3>Packaging & Delivery</h3>
-                                            <span className="line"></span>
-                                            <p>
-                                                Less lion goodness that euphemistically robin expeditiously bluebird
-                                                smugly scratched far while thus cackled sheepishly rigid after due one
-                                                assenting regarding censorious while occasional or this more crane went
-                                                more as this less much amid overhung anathematic because much held one
-                                                exuberantly sheep goodness so where rat wry well concomitantly. Scallop
-                                                or far crud plain remarkably far by thus far iguana lewd precociously
-                                                and and less rattlesnake contrary caustic wow this near alas and next
-                                                and pled the yikes articulate about as less cackled dalmatian in much
-                                                less well jeering for the thanks blindly sentimental whimpered less
-                                                across objectively fanciful grimaced wildly some wow and rose jeepers
-                                                outgrew lugubrious luridly irrationally attractively dachshund.
-                                            </p>
-
-                                            <h3>Suggested Use</h3>
-                                            <h4>Refrigeration not necessary.</h4>
-                                            <h4>Stir before serving</h4>
-
-                                            <h3>Other Ingredients</h3>
-                                            <h4>Organic raw pecans, organic raw cashews.</h4>
-                                            <h4>
-                                                This butter was produced using a LTG (Low Temperature Grinding) process
-                                            </h4>
-                                            <h4>
-                                                Made in machinery that processes tree nuts but does not process peanuts,
-                                                gluten, dairy or soy
-                                            </h4>
+                                            <p>{currentProduct.description}</p>
                                         </div>
                                     </div>
                                 )}
@@ -535,136 +528,73 @@ function DetailsPage() {
 
                                 {activeTab === 3 && (
                                     <div className="tabContent">
-                                        <div className="wrapComment">
-                                            <div className="cardComment">
-                                                <div className="wrapInfoUser">
-                                                    <div className="circleBox">
-                                                        <img
-                                                            className="imgUser"
-                                                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYdM8MF19RNGhPuH2eXjSvBOmCc8NLpoTYF-qQT9pS2w&s"
-                                                            alt=""
-                                                        />
-                                                    </div>
-                                                    <a href="#!" className="nameUser">
-                                                        Johnny
-                                                    </a>
-                                                </div>
-
-                                                <div className="desComment">
-                                                    <div className="dateAndRating">
-                                                        <span className="dateTime">December 4, 2022 at 3:12 pm</span>
-                                                        <Rating
-                                                            name="half-read-only"
-                                                            defaultValue={4.5}
-                                                            precision={0.5}
-                                                            readOnly
-                                                        />
-                                                    </div>
-                                                    <div className="textComment">
-                                                        <p>
-                                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                                            Delectus, suscipit exercitationem accusantium obcaecati quos
-                                                            voluptate nesciunt facilis itaque modi commodi dignissimos
-                                                            sequi repudiandae minus ab deleniti totam officia id
-                                                            incidunt?
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div className="wrapComment">
-                                            <div className="cardComment">
-                                                <div className="wrapInfoUser">
-                                                    <div className="circleBox">
-                                                        <img
-                                                            className="imgUser"
-                                                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYdM8MF19RNGhPuH2eXjSvBOmCc8NLpoTYF-qQT9pS2w&s"
-                                                            alt=""
-                                                        />
-                                                    </div>
-                                                    <a href="#!" className="nameUser">
-                                                        Johnny
-                                                    </a>
-                                                </div>
-
-                                                <div className="desComment">
-                                                    <div className="dateAndRating">
-                                                        <span className="dateTime">December 4, 2022 at 3:12 pm</span>
-                                                        <Rating
-                                                            name="half-read-only"
-                                                            defaultValue={4.5}
-                                                            precision={0.5}
-                                                            readOnly
-                                                        />
-                                                    </div>
-                                                    <div className="textComment">
-                                                        <p>
-                                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                                            Delectus, suscipit exercitationem accusantium obcaecati quos
-                                                            voluptate nesciunt facilis itaque modi commodi dignissimos
-                                                            sequi repudiandae minus ab deleniti totam officia id
-                                                            incidunt?
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div className="wrapComment">
-                                            <div className="cardComment">
-                                                <div className="wrapInfoUser">
-                                                    <div className="circleBox">
-                                                        <img
-                                                            className="imgUser"
-                                                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYdM8MF19RNGhPuH2eXjSvBOmCc8NLpoTYF-qQT9pS2w&s"
-                                                            alt=""
-                                                        />
-                                                    </div>
-                                                    <a href="#!" className="nameUser">
-                                                        Johnny
-                                                    </a>
-                                                </div>
-
-                                                <div className="desComment">
-                                                    <div className="dateAndRating">
-                                                        <span className="dateTime">December 4, 2022 at 3:12 pm</span>
-                                                        <Rating
-                                                            name="half-read-only"
-                                                            defaultValue={4.5}
-                                                            precision={0.5}
-                                                            readOnly
-                                                        />
-                                                    </div>
-                                                    <div className="textComment">
-                                                        <p>
-                                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                                            Delectus, suscipit exercitationem accusantium obcaecati quos
-                                                            voluptate nesciunt facilis itaque modi commodi dignissimos
-                                                            sequi repudiandae minus ab deleniti totam officia id
-                                                            incidunt?
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        {productReviews.length !== 0 &&
+                                            productReviews.map((item) => {
+                                                if (item.productId === parseInt(id)) {
+                                                    return (
+                                                        <div className="wrapComment">
+                                                            <div className="cardComment">
+                                                                <div className="wrapInfoUser">
+                                                                    <div className="circleBox">
+                                                                        <img
+                                                                            className="imgUser"
+                                                                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYdM8MF19RNGhPuH2eXjSvBOmCc8NLpoTYF-qQT9pS2w&s"
+                                                                            alt=""
+                                                                        />
+                                                                    </div>
+                                                                    <a href="#!" className="nameUser">
+                                                                        {item.name}
+                                                                    </a>
+                                                                </div>
+                                                                <div className="desComment">
+                                                                    <div className="dateAndRating">
+                                                                        <span className="dateTime">{item.date}</span>
+                                                                        <Rating
+                                                                            name="half-read-only"
+                                                                            value={parseFloat(item.rating)}
+                                                                            precision={0.5}
+                                                                            readOnly
+                                                                        />
+                                                                    </div>
+                                                                    <div className="textComment">
+                                                                        <p>{item.comment}</p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    );
+                                                }
+                                            })}
 
                                         <div className="wrapAddComment">
                                             <h3>Add a review</h3>
                                             <Rating
                                                 className="ratingComment"
-                                                name=""
+                                                onChange={(e, newValue) => {
+                                                    onInputComment(e.target.name, newValue);
+                                                }}
+                                                name="rating"
                                                 defaultValue={0}
                                                 precision={0.5}
                                             />
                                             <br />
                                             <textarea
+                                                onBlur={(e) => {
+                                                    onInputComment(e.target.name, e.target.value);
+                                                }}
+                                                name="comment"
                                                 rows="7"
                                                 placeholder="Write review"
                                                 className="commentBox"
                                             ></textarea>
                                             <br />
-                                            <button className="btnAddComment">Submit review</button>
+                                            <button
+                                                onClick={handleSubmitReview}
+                                                type="submit"
+                                                className="btnAddComment"
+                                            >
+                                                Submit review
+                                            </button>
                                         </div>
                                     </div>
                                 )}
@@ -672,8 +602,19 @@ function DetailsPage() {
                         </div>
                     </div>
 
-                    <div className="col-3">
-                        <Sidebar />
+                    <div className="col-3">{/* <Sidebar data={productData} /> */}</div>
+                    <div className="productRelated">
+                        <h2>Related Product</h2>
+                        <Slider {...settings1}>
+                            {relatedProduct.length !== 0 &&
+                                relatedProduct.map((item, index) => {
+                                    return (
+                                        <div key={index} className="item">
+                                            <Product itemdata={item} />
+                                        </div>
+                                    );
+                                })}
+                        </Slider>
                     </div>
                 </div>
             </div>

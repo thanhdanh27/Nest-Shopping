@@ -1,15 +1,21 @@
 import './Sidebar.css';
-import * as React from 'react';
+import { useState, useEffect, Fragment } from 'react';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import { green } from '@mui/material/colors';
 
 import Slider from '@mui/material/Slider';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFilter } from '@fortawesome/free-solid-svg-icons';
+import { faFilter, faStar } from '@fortawesome/free-solid-svg-icons';
 
-function Sidebar() {
-    const [value1, setValue1] = React.useState([500, 1000]);
+function Sidebar(props) {
+    const [productData, setProductData] = useState([]);
+
+    useEffect(() => {
+        setProductData(props.data);
+    }, [props.data]);
+
+    const [value1, setValue1] = useState([500, 5000]);
     const minDistance = 100;
     const handleChange1 = (event, newValue, activeThumb) => {
         if (!Array.isArray(newValue)) {
@@ -21,6 +27,14 @@ function Sidebar() {
         } else {
             setValue1([value1[0], Math.max(newValue[1], value1[0] + minDistance)]);
         }
+        props.filterByPrice(newValue[0], newValue[1]);
+    };
+
+    const starRating = [2, 3, 4, 5];
+    const [star, setStarRating] = useState();
+    const getStarRating = (item) => {
+        //setStarRating(item);
+        props.fillterByRating(item);
     };
 
     return (
@@ -29,45 +43,18 @@ function Sidebar() {
                 <h2 className="cardTitle">Category</h2>
                 <div className="cardBars">
                     <ul>
-                        <li>
-                            <img
-                                src="https://wp.alithemes.com/html/nest/demo/assets/imgs/theme/icons/category-1.svg"
-                                alt=""
-                            />
-
-                            <span className="titleCardBars">Milk & Dairies</span>
-                            <span className="quantityCardBars">30</span>
-                        </li>
-
-                        <li>
-                            <img
-                                src="https://wp.alithemes.com/html/nest/demo/assets/imgs/theme/icons/category-1.svg"
-                                alt=""
-                            />
-
-                            <span className="titleCardBars">Milk & Dairies</span>
-                            <span className="quantityCardBars">30</span>
-                        </li>
-
-                        <li>
-                            <img
-                                src="https://wp.alithemes.com/html/nest/demo/assets/imgs/theme/icons/category-1.svg"
-                                alt=""
-                            />
-
-                            <span className="titleCardBars">Milk & Dairies</span>
-                            <span className="quantityCardBars">30</span>
-                        </li>
-
-                        <li>
-                            <img
-                                src="https://wp.alithemes.com/html/nest/demo/assets/imgs/theme/icons/category-1.svg"
-                                alt=""
-                            />
-
-                            <span className="titleCardBars">Milk & Dairies</span>
-                            <span className="quantityCardBars">30</span>
-                        </li>
+                        {productData.length !== 0 &&
+                            productData.map((product, index) => {
+                                return (
+                                    <a href={`/cat/${product.cat_name.toLowerCase()}`}>
+                                        <li key={index}>
+                                            <img src={product.image} alt="" />
+                                            <span className="titleCardBars">{product.cat_name}</span>
+                                            <span className="quantityCardBars">{product.quantity}</span>
+                                        </li>
+                                    </a>
+                                );
+                            })}
                     </ul>
                 </div>
             </h1>
@@ -80,7 +67,7 @@ function Sidebar() {
                         value={value1}
                         min={0}
                         step={1}
-                        max={2000}
+                        max={60000}
                         valueLabelDisplay="auto"
                         onChange={handleChange1}
                         disableSwap
@@ -96,55 +83,35 @@ function Sidebar() {
                 </div>
 
                 <div className="wrapCheckBox">
-                    <h3 className="titleCheckBox">Color</h3>
+                    <h3 className="titleCheckBox">Filter By Rating</h3>
                     <ul>
-                        <li>
-                            <FormControlLabel
-                                control={
-                                    <Checkbox
-                                        sx={{
-                                            '&.Mui-checked': {
-                                                color: green[400],
-                                            },
-                                            '& .MuiSvgIcon-root': { fontSize: 22 },
+                        {starRating.map((item, index) => {
+                            return (
+                                <li key={index}>
+                                    <FormControlLabel
+                                        onClick={() => {
+                                            getStarRating(item);
                                         }}
+                                        control={
+                                            <Checkbox
+                                                sx={{
+                                                    '&.Mui-checked': {
+                                                        color: green[400],
+                                                    },
+                                                    '& .MuiSvgIcon-root': { fontSize: 22 },
+                                                }}
+                                            />
+                                        }
+                                        label={
+                                            <Fragment>
+                                                {item}
+                                                <FontAwesomeIcon className="starRating" icon={faStar} />
+                                            </Fragment>
+                                        }
                                     />
-                                }
-                                label="Red"
-                            />
-                        </li>
-
-                        <li>
-                            <FormControlLabel
-                                control={
-                                    <Checkbox
-                                        sx={{
-                                            '&.Mui-checked': {
-                                                color: green[400],
-                                            },
-                                            '& .MuiSvgIcon-root': { fontSize: 22 },
-                                        }}
-                                    />
-                                }
-                                label="Green"
-                            />
-                        </li>
-
-                        <li>
-                            <FormControlLabel
-                                control={
-                                    <Checkbox
-                                        sx={{
-                                            '&.Mui-checked': {
-                                                color: green[400],
-                                            },
-                                            '& .MuiSvgIcon-root': { fontSize: 22 },
-                                        }}
-                                    />
-                                }
-                                label="Blue"
-                            />
-                        </li>
+                                </li>
+                            );
+                        })}
                     </ul>
                 </div>
 

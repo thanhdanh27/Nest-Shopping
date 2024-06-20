@@ -18,7 +18,7 @@ function Listing(props) {
 
     const [productData, setProductData] = useState([]);
     const [productAll, setProductAll] = useState([]);
-    const { id } = useParams();
+    const { id1, id2 } = useParams();
     useEffect(() => {
         setProductData(props.data);
     }, []);
@@ -28,7 +28,7 @@ function Listing(props) {
         if (props.single === true) {
             productData.length !== 0 &&
                 productData.forEach((item) => {
-                    if (item.cat_name.toLowerCase() === id) {
+                    if (item.cat_name.toLowerCase() === id1) {
                         item.items.length !== 0 &&
                             item.items.forEach((item_) => {
                                 item_.products.length !== 0 &&
@@ -44,7 +44,7 @@ function Listing(props) {
                 productData.forEach((item) => {
                     item.items.length !== 0 &&
                         item.items.forEach((item_) => {
-                            if (item_.cat_name.replace(/\s/g, '-').toLowerCase() === id) {
+                            if (item_.cat_name.replace(/\s/g, '-').toLowerCase() === id2) {
                                 item_.products.length !== 0 &&
                                     item_.products.forEach((item__) => {
                                         arrAllProducts.push(item__);
@@ -55,6 +55,83 @@ function Listing(props) {
             setProductAll(arrAllProducts);
         }
     }, [productData]);
+
+    const newFilterProducts = [];
+    const filterByPrice = (minPrice, maxPrice) => {
+        if (props.single === true) {
+            productData.length !== 0 &&
+                productData.forEach((item) => {
+                    if (item.cat_name.toLowerCase() === id1) {
+                        item.items.length !== 0 &&
+                            item.items.forEach((item_) => {
+                                item_.products.length !== 0 &&
+                                    item_.products.forEach((item__) => {
+                                        const priceInt = +item__.price.replace(',', '');
+                                        if (priceInt >= minPrice && priceInt <= maxPrice) {
+                                            newFilterProducts.push(item__);
+                                        }
+                                    });
+                            });
+                    }
+                });
+            setProductAll(newFilterProducts);
+        } else {
+            productData.length !== 0 &&
+                productData.forEach((item) => {
+                    item.items.length !== 0 &&
+                        item.items.forEach((item_) => {
+                            if (item_.cat_name.replace(/\s/g, '-').toLowerCase() === id2) {
+                                item_.products.length !== 0 &&
+                                    item_.products.forEach((item__) => {
+                                        const priceInt = +item__.price.replace(',', '');
+                                        if (priceInt >= minPrice && priceInt <= maxPrice) {
+                                            newFilterProducts.push(item__);
+                                        }
+                                    });
+                            }
+                        });
+                });
+            setProductAll(newFilterProducts);
+        }
+    };
+
+    const newFillterByRating = [];
+    const fillterByRating = (star) => {
+        if (props.single === true) {
+            productData.length !== 0 &&
+                productData.forEach((item) => {
+                    if (item.cat_name.toLowerCase() === id1) {
+                        item.items.length !== 0 &&
+                            item.items.forEach((item_) => {
+                                item_.products.length !== 0 &&
+                                    item_.products.forEach((product) => {
+                                        if (product.rating === star) {
+                                            newFillterByRating.push(product);
+                                        }
+                                    });
+                            });
+                    }
+                });
+            setProductAll(newFillterByRating);
+        } else {
+            productData.length !== 0 &&
+                productData.forEach((item) => {
+                    item.items.length !== 0 &&
+                        item.items.forEach((item_) => {
+                            if (item_.cat_name.replace(/\s/g, '-').toLowerCase() === id2) {
+                                item_.products.length !== 0 &&
+                                    item_.products.forEach((product) => {
+                                        if (product.rating === star) {
+                                            newFillterByRating.push(product);
+                                        }
+                                    });
+                            }
+                        });
+                });
+            setProductAll(newFillterByRating);
+        }
+    };
+
     return (
         <>
             <div className="wrapListing">
@@ -74,15 +151,19 @@ function Listing(props) {
                                         <span className="d-flex align-items-center">
                                             <FontAwesomeIcon className="chevronRightIcon" icon={faChevronRight} />
                                         </span>
-                                        <li>
-                                            <Link to="">Shop</Link>
+                                        <li className="text-capitalize">
+                                            <a href={`/cat/${id1}`}>{id1}</a>
                                         </li>
-                                        <span className="d-flex align-items-center">
-                                            <FontAwesomeIcon className="chevronRightIcon" icon={faChevronRight} />
-                                        </span>
-                                        <li>
-                                            <Link to="">Snake</Link>
-                                        </li>
+                                        {id2 !== undefined && (
+                                            <span className="d-flex align-items-center">
+                                                <FontAwesomeIcon className="chevronRightIcon" icon={faChevronRight} />
+                                            </span>
+                                        )}
+                                        {id2 !== undefined && (
+                                            <li className="text-capitalize">
+                                                <a href={`/cat/${id1}/${id2}`}>{id2.replaceAll('-', ' ')}</a>
+                                            </li>
+                                        )}
                                     </ul>
                                 </div>
                             </div>
@@ -95,7 +176,7 @@ function Listing(props) {
             <div className="listingData">
                 <div className="row">
                     <div className="col-3">
-                        <Sidebar />
+                        <Sidebar fillterByRating={fillterByRating} filterByPrice={filterByPrice} data={productData} />
                     </div>
 
                     <div className="col-9">
