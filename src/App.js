@@ -11,18 +11,34 @@ import axios from 'axios';
 import Cart from './pages/Cart';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
+import Loader from './assets/img/loader.gif';
+import data from './data/data.js';
+import './reponsive.css';
 
 const MyContext = createContext();
 
 function App() {
     const [productsData, setProductData] = useState([]);
+    const [isLogin, setIsLogin] = useState();
+    const [loading, setLoading] = useState(true);
     useEffect(() => {
-        getData('http://localhost:3000/productData');
+        // getData('http://localhost:3000/productData');
+
+        const is_Login = localStorage.getItem('isLogin');
+        setIsLogin(is_Login);
+        setProductData(data.productData);
+        setTimeout(() => {
+            setLoading(false);
+        }, 2000);
     }, []);
+
     const getData = async (url) => {
         try {
             await axios.get(url).then((response) => {
                 setProductData(response.data);
+                setTimeout(() => {
+                    setLoading(false);
+                }, 2000);
             });
         } catch (error) {
             console.log(error.message);
@@ -31,7 +47,8 @@ function App() {
 
     const [productReviews, setProductReviews] = useState([]);
     useEffect(() => {
-        getDataReviews('http://localhost:3000/productReviews');
+        // getDataReviews('http://localhost:3000/productReviews');
+        setProductReviews(data.productReviews);
     }, []);
 
     const getDataReviews = async (url) => {
@@ -74,17 +91,34 @@ function App() {
     const emptyItemCart = () => {
         setCartItems([]);
     };
+    const signOut = () => {
+        localStorage.removeItem('isLogin');
+        setIsLogin('false');
+    };
+
+    const signIn = () => {
+        localStorage.setItem('isLogin', 'true');
+        setIsLogin('true');
+    };
 
     const value = {
         addToCart,
         deleteItemCart,
         emptyItemCart,
+        isLogin,
+        signOut,
+        signIn,
     };
 
     return (
         productsData.length !== 0 && (
             <MyContext.Provider value={value}>
                 <BrowserRouter>
+                    {/* {loading === true && (
+                        <div className="loader">
+                            <img src={Loader} alt="loader" />
+                        </div>
+                    )} */}
                     <Header data={productsData} itemCartDelete={itemCartDelete} cartItem={cartItems} />
                     <Routes>
                         <Route path="/" element={<Home data={productsData} />} />

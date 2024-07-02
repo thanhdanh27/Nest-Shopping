@@ -9,13 +9,21 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useContext } from 'react';
 import { MyContext } from '../../App';
+import { useNavigate } from 'react-router-dom';
+import data from '../../data/data.js';
 
 function Cart(props) {
     const [cartItem, setCartItem] = useState([]);
     const context = useContext(MyContext);
+    const history = useNavigate();
     useEffect(() => {
-        getDataCart('http://localhost:3000/cartItems');
-    }, [props.itemCartDelete]);
+        if (context.isLogin === 'true') {
+            // getDataCart('http://localhost:3000/cartItems');
+            setCartItem(data.cartItems);
+        } else {
+            history('/');
+        }
+    }, [props.itemCartDelete, context.isLogin]);
 
     const getDataCart = async (url) => {
         try {
@@ -154,6 +162,7 @@ function Cart(props) {
                                 <div className="cardContent d-flex">
                                     <span>Subtotal</span>
                                     <span>
+                                        $
                                         {cartItem.length !== 0 &&
                                             cartItem
                                                 .map((item) => {
@@ -175,7 +184,15 @@ function Cart(props) {
 
                                 <div className="cardContent d-flex">
                                     <span>Total</span>
-                                    <span>$12.31</span>
+                                    <span>
+                                        $
+                                        {cartItem.length !== 0 &&
+                                            cartItem
+                                                .map((item) => {
+                                                    return parseInt(item.price.replace(',', '')) * item.quantity;
+                                                })
+                                                .reduce((total, value) => total + value, 0)}
+                                    </span>
                                 </div>
 
                                 <div className="btnCheckout">

@@ -198,6 +198,7 @@ header .container-fluid {
     margin-bottom: 20px;
     transition: linear 0.2s;
     cursor: pointer;
+    text-align: left;
 }
 
 .listUser li:hover {

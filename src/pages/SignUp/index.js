@@ -10,12 +10,14 @@ import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import { app } from '../../firebase';
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
+import { useNavigate } from 'react-router-dom';
 const auth = getAuth(app);
 
 function SignUp() {
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
     const [loading, setLoading] = useState(false);
+    const history = useNavigate();
     const [formFields, setFormFields] = useState({
         email: '',
         password: '',
@@ -43,6 +45,7 @@ function SignUp() {
                     password: '',
                     confirmPassword: '',
                 });
+                history('/signin');
                 // ...
             })
             .catch((error) => {
@@ -144,7 +147,10 @@ function SignUp() {
                         </div>
 
                         <div className="form-group">
-                            <button onClick={signUp}>Sign In</button>
+                            <button type="button" onClick={signUp}>
+                                Sign Up
+                            </button>
+
                             <h2 className="text-center mt-5">Or</h2>
                         </div>
 

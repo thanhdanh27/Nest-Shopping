@@ -1,21 +1,39 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './Navbar.css';
-import { faChevronDown, faHeadset } from '@fortawesome/free-solid-svg-icons';
+import { faChevronDown, faHeadset, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { faBorderAll } from '@fortawesome/free-solid-svg-icons/faBorderAll';
 import { Link } from 'react-router-dom';
 import Banner from '../../assets/img/banner-menu.png';
 import { useEffect, useState } from 'react';
+import { useContext } from 'react';
+import { MyContext } from '../../App';
 
 function Navbar(props) {
     const [navData, setNavData] = useState([]);
     useEffect(() => {
         setNavData(props.data);
     }, []);
+    const [openNav, setOpenNav] = useState();
+    useEffect(() => {
+        setOpenNav(props.openNav);
+    }, [props.openNav]);
+    const closeNav = () => {
+        props.closeNav();
+        setOpenNav(false);
+    };
+
+    const context = useContext(MyContext);
+
     return (
-        <div className="nav">
+        <div className={openNav === true ? 'nav open' : 'nav'}>
             <div className="container-fluid">
                 <div className="row position-relative">
-                    <div className="col-sm-3 part1">
+                    <div onClick={closeNav} className="btnClose pc-none">
+                        <span className="circle">
+                            <FontAwesomeIcon className={openNav === false ? 'iconClose' : ''} icon={faXmark} />
+                        </span>
+                    </div>
+                    <div className="col-sm-3 part1 mobile-none">
                         <button className="btnBrowse">
                             <FontAwesomeIcon icon={faBorderAll} />
                             &nbsp; Browse All Categories &nbsp;
@@ -33,7 +51,7 @@ function Navbar(props) {
                                     return (
                                         <li key={index} className="pageItem">
                                             <a href={`/cat/${item.cat_name.toLowerCase()}`}>
-                                                {item.cat_name} &nbsp;
+                                                <span>{item.cat_name}</span> &nbsp;
                                                 {item.items !== 0 && (
                                                     <FontAwesomeIcon className="iconPageItem" icon={faChevronDown} />
                                                 )}
@@ -105,7 +123,7 @@ function Navbar(props) {
 
                             <li className="pageItem page">
                                 <Link to="/">
-                                    Page &nbsp;
+                                    <span onClick={closeNav}>Pages</span> &nbsp;
                                     <FontAwesomeIcon className="iconPageItem" icon={faChevronDown} />
                                 </Link>
                                 <ul className="listMenuPage">
@@ -150,10 +168,17 @@ function Navbar(props) {
                             <li className="pageItem">
                                 <Link to="/">Contact</Link>
                             </li>
+                            {context.isLogin !== 'true' && (
+                                <li onClick={closeNav} className="pageItem pc-none">
+                                    <Link className="d-block" to="/signin">
+                                        <button className="btnSigIn">Sign In</button>
+                                    </Link>
+                                </li>
+                            )}
                         </ul>
                     </div>
 
-                    <div className="col-sm-2">
+                    <div className="col-sm-2 mobile-none">
                         <div className="supportCenter">
                             <FontAwesomeIcon className="iconSupport" icon={faHeadset} />
                             <div className="wrapSupport">
