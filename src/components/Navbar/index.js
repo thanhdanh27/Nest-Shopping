@@ -73,9 +73,9 @@ function Navbar(props) {
                                                 window.innerWidth < 740 ? 'pageItem ResMobile ' : 'pageItem ResPc'
                                             }
                                         >
-                                            <a href={`/Nest-Shopping/#/cat/${item.cat_name.toLowerCase()}`}>
+                                            <Link to={`/Nest-Shopping/#/cat/${item.cat_name.toLowerCase()}`}>
                                                 <span>{item.cat_name}</span> &nbsp;
-                                            </a>
+                                            </Link>
                                             {item.items !== 0 && (
                                                 <FontAwesomeIcon
                                                     onClick={() => {

@@ -153,7 +153,7 @@ function Header(props) {
                                     </li>
 
                                     <li className="headerTabsItem">
-                                        <a href="/cart">
+                                        <a href="/Nest-Shopping/#/cart">
                                             <span className="numberItem">{cartItemLength.length}</span>
                                             <FontAwesomeIcon className="icon" icon={faCartShopping} />
                                             <p className="mobile-none">Cart</p>
