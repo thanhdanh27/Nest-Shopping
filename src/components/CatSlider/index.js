@@ -1,7 +1,7 @@
 import Slider from 'react-slick';
 import './CatSlider.css';
 import { useEffect, useState } from 'react';
-
+import { Link } from 'react-router-dom';
 function CatSlider(props) {
     const [productData, setProductData] = useState([]);
     useEffect(() => {
