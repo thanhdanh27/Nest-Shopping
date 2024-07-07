@@ -194,7 +194,7 @@ function Listing(props) {
                                 >
                                     <FontAwesomeIcon icon={faTable} />
                                     <span>Show: {number}</span>
-                                    <FontAwesomeIcon icon={faChevronDown} />
+                                    <FontAwesomeIcon className="iconChevronDown" icon={faChevronDown} />
                                     {selected && (
                                         <div className="dropdown">
                                             <ul>
@@ -231,7 +231,7 @@ function Listing(props) {
                                 >
                                     <FontAwesomeIcon icon={faTable} />
                                     <span>Show: {feature}</span>
-                                    <FontAwesomeIcon icon={faChevronDown} />
+                                    <FontAwesomeIcon className="iconChevronDown" icon={faChevronDown} />
                                     {selected1 && (
                                         <div className="dropdown">
                                             <ul>

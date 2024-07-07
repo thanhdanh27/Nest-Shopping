@@ -1,12 +1,13 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './Navbar.css';
-import { faChevronDown, faHeadset, faXmark } from '@fortawesome/free-solid-svg-icons';
+import { faChevronDown, faHeadset, faSearch, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { faBorderAll } from '@fortawesome/free-solid-svg-icons/faBorderAll';
 import { Link } from 'react-router-dom';
 import Banner from '../../assets/img/banner-menu.png';
 import { useEffect, useState } from 'react';
 import { useContext } from 'react';
 import { MyContext } from '../../App';
+import Logo from '../../assets/logo.svg';
 
 function Navbar(props) {
     const [navData, setNavData] = useState([]);
@@ -22,6 +23,16 @@ function Navbar(props) {
         setOpenNav(false);
     };
 
+    const [IsOpenListPage, setIsOpenListPage] = useState([false, 0]);
+    const openListPage = (index) => {
+        setIsOpenListPage((prevState) => {
+            const newState = [...prevState];
+            newState[0] = !IsOpenListPage[0];
+            newState[1] = index;
+            return newState;
+        });
+    };
+
     const context = useContext(MyContext);
 
     return (
@@ -29,6 +40,7 @@ function Navbar(props) {
             <div className="container-fluid">
                 <div className="row position-relative">
                     <div onClick={closeNav} className="btnClose pc-none">
+                        <img className="logo" src={Logo} alt="logo" />
                         <span className="circle">
                             <FontAwesomeIcon className={openNav === false ? 'iconClose' : ''} icon={faXmark} />
                         </span>
@@ -42,22 +54,45 @@ function Navbar(props) {
                     </div>
 
                     <div className="col-sm-7">
+                        <div className="pc-none boxSearch">
+                            <input className="inputSearch" placeholder="Search for items..." type="text" />
+                            <button className="btnSearch">
+                                <FontAwesomeIcon icon={faSearch} />
+                            </button>
+                        </div>
                         <ul className="listPage">
                             <li className="pageItem">
-                                <Link to="/">Home</Link>
+                                <a href="/">Home</a>
                             </li>
                             {navData.length !== 0 &&
                                 navData.map((item, index) => {
                                     return (
-                                        <li key={index} className="pageItem">
+                                        <li
+                                            key={index}
+                                            className={
+                                                window.innerWidth < 740 ? 'pageItem ResMobile ' : 'pageItem ResPc'
+                                            }
+                                        >
                                             <a href={`/cat/${item.cat_name.toLowerCase()}`}>
                                                 <span>{item.cat_name}</span> &nbsp;
-                                                {item.items !== 0 && (
-                                                    <FontAwesomeIcon className="iconPageItem" icon={faChevronDown} />
-                                                )}
                                             </a>
+                                            {item.items !== 0 && (
+                                                <FontAwesomeIcon
+                                                    onClick={() => {
+                                                        openListPage(index);
+                                                    }}
+                                                    className="iconPageItem"
+                                                    icon={faChevronDown}
+                                                />
+                                            )}
                                             {item.items.length !== 0 && (
-                                                <ul className="listMenuPage">
+                                                <ul
+                                                    className={
+                                                        IsOpenListPage[0] === true && IsOpenListPage[1] === index
+                                                            ? 'listMenuPage d-block'
+                                                            : 'listMenuPage'
+                                                    }
+                                                >
                                                     {item.items.map((item_, index) => {
                                                         return (
                                                             <li key={index} className="menuPageItem">
@@ -80,10 +115,8 @@ function Navbar(props) {
                                 })}
 
                             <li className="pageItem position-static mega">
-                                <Link to="/">
-                                    Mega Menu &nbsp;
-                                    <FontAwesomeIcon className="iconPageItem" icon={faChevronDown} />
-                                </Link>
+                                <Link to="/">Mega Menu &nbsp;</Link>
+                                <FontAwesomeIcon className="iconPageItem" icon={faChevronDown} />
                                 <div className="dropdown_menu mega">
                                     <div className="row">
                                         {navData.length !== 0 &&
@@ -121,12 +154,26 @@ function Navbar(props) {
                                 </div>
                             </li>
 
-                            <li className="pageItem page">
+                            <li
+                                className={window.innerWidth < 740 ? 'pageItem ResMobile page ' : 'pageItem ResPc page'}
+                            >
                                 <Link to="/">
                                     <span onClick={closeNav}>Pages</span> &nbsp;
-                                    <FontAwesomeIcon className="iconPageItem" icon={faChevronDown} />
                                 </Link>
-                                <ul className="listMenuPage">
+                                <FontAwesomeIcon
+                                    onClick={() => {
+                                        openListPage(5);
+                                    }}
+                                    className="iconPageItem"
+                                    icon={faChevronDown}
+                                />
+                                <ul
+                                    className={
+                                        IsOpenListPage[0] === true && IsOpenListPage[1] === 5
+                                            ? 'listMenuPage d-block'
+                                            : 'listMenuPage'
+                                    }
+                                >
                                     <li className="menuPageItem">
                                         <Link className="menuPageLink" to="/">
                                             About us
@@ -162,6 +209,11 @@ function Navbar(props) {
                                             Reset Password
                                         </Link>
                                     </li>
+                                    <li className="menuPageItem">
+                                        <a className="menuPageLink" href="*">
+                                            404 Error
+                                        </a>
+                                    </li>
                                 </ul>
                             </li>
 
@@ -170,7 +222,7 @@ function Navbar(props) {
                             </li>
                             {context.isLogin !== 'true' && (
                                 <li onClick={closeNav} className="pageItem pc-none">
-                                    <Link className="d-block" to="/signin">
+                                    <Link className="d-block w-100" to="/signin">
                                         <button className="btnSigIn">Sign In</button>
                                     </Link>
                                 </li>

@@ -31,7 +31,7 @@ function DetailsPage(props) {
         dots: false,
         infinite: true,
         speed: 500,
-        slidesToShow: 5,
+        slidesToShow: window.innerWidth < 740 ? 1 : 5,
         slidesToScroll: 1,
         fade: false,
         arrows: true,
@@ -209,7 +209,13 @@ function DetailsPage(props) {
                                             currentProduct.productImages.map((item, index) => {
                                                 return (
                                                     <div key={index} className="item">
-                                                        <InnerImageZoom zoomType="hover" zoomScale={1} src={item} />
+                                                        <InnerImageZoom
+                                                            zoomType="hover"
+                                                            zoomScale={1}
+                                                            src={`https://images.weserv.nl/?url=${encodeURIComponent(
+                                                                item,
+                                                            )}`}
+                                                        />
                                                     </div>
                                                 );
                                             })}
@@ -228,7 +234,13 @@ function DetailsPage(props) {
                                         currentProduct.productImages.map((item, index) => {
                                             return (
                                                 <div key={index} className="item">
-                                                    <img className="w-100" src={item} alt="" />
+                                                    <img
+                                                        className="w-100"
+                                                        src={`https://images.weserv.nl/?url=${encodeURIComponent(
+                                                            item,
+                                                        )}`}
+                                                        alt=""
+                                                    />
                                                 </div>
                                             );
                                         })}

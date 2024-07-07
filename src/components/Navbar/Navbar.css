@@ -4,6 +4,11 @@
     border-top: 1px solid rgba(0, 0, 0, 0.1);
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     align-items: center;
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+    z-index: 99;
+    background-color: #fff;
 }
 
 .row .part1 {
@@ -123,7 +128,7 @@
     padding-top: 60px;
 }
 
-.pageItem:hover .listMenuPage {
+.pageItem.ResPc:hover .listMenuPage {
     display: block;
 }
 
@@ -189,4 +194,38 @@
 
 .pageItem.mega:hover .dropdown_menu {
     display: block;
+}
+
+.boxSearch {
+    height: 45px;
+    color: #253d4e;
+    background-color: #f2f3f4;
+    border-radius: 5px;
+    display: flex;
+    border: 0;
+    align-items: center;
+    padding: 0 15px;
+    margin-bottom: 22px;
+}
+
+.boxSearch .inputSearch {
+    width: 100%;
+    font-size: 1.4rem;
+    border: none;
+    background-color: transparent;
+}
+.boxSearch:focus-within {
+    border: 1px solid #bce3c9;
+}
+
+.boxSearch .btnSearch {
+    border: none;
+    display: inline-block;
+    padding: 8px;
+    outline: none;
+    background-color: transparent;
+}
+
+.btnClose .logo {
+    width: 140px;
 }

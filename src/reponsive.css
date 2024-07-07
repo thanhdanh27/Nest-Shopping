@@ -2,9 +2,15 @@
 @media only screen and (max-width: 739px) {
     header {
         padding: 20px 0;
-        position: relative;
+        position: sticky;
+        position: -webkit-sticky;
         z-index: 99;
+        background-color: #fff;
+        top: 0;
+        border-bottom: 1px solid #ececec;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.07);
     }
+
     .headerSearch {
         display: none;
     }
@@ -41,7 +47,7 @@
         top: 0;
         left: -100%;
         right: 0;
-        width: 80%;
+        width: 98%;
         height: 100%;
         background-color: #fff;
         z-index: 999;
@@ -65,21 +71,50 @@
         padding: 13px 0;
         font-size: 1.4rem;
         border-bottom: 1px solid #ececec;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
     }
+    .listMenuPage {
+        position: unset;
+        border: none;
+        border-radius: unset;
+        box-shadow: none;
+        margin-top: 0;
+        padding: 8px 10px;
+        display: none;
+        animation: showMenu linear 0.4s;
+        width: 100%;
+    }
+    .menuPageItem .menuPageLink {
+        font-size: 1.3rem;
+        font-weight: 500 !important;
+    }
+    .menuPageItem {
+        margin-bottom: 15px;
+    }
+    .menuPageItem:last-child {
+        margin-bottom: 0;
+    }
+    .pageItem.mega:hover .dropdown_menu {
+        display: none !important;
+    }
+
     .nav .container-fluid .listPage .pageItem:last-child {
         border-bottom: none;
     }
-    .nav .container-fluid .listPage .pageItem a {
-        display: flex;
-        width: 100%;
-        align-items: center;
-        justify-content: space-between;
-    }
+
     .nav .container-fluid .listPage .pageItem a .iconPageItem {
         opacity: 1;
     }
     .nav .container-fluid .btnClose {
-        text-align: right;
+        display: flex;
+        justify-content: space-between;
+        padding-bottom: 12px;
+        align-items: center;
+        border-bottom: 1px solid #ececec;
+        margin-bottom: 20px;
     }
     .nav .container-fluid .btnClose .circle {
         display: inline-block;
@@ -113,7 +148,7 @@
         display: block !important;
         transition: all ease 0.7s;
     }
-    header .headerTabsItem.user:hover .listUser {
+    header .headerTabsItem.user .listUser.open {
         opacity: 1;
         right: 0;
     }
@@ -124,6 +159,350 @@
         width: 100%;
         height: 100%;
         transition: all ease 0.8s;
+    }
+    .container-fluid.homeSlider {
+        padding: 28px 12px;
+    }
+    .container-fluid.homeSlider .slick-slider .slick-arrow {
+        display: none !important;
+    }
+    .imgSlider {
+        height: 350px;
+    }
+    .wrapInfoSlider {
+        left: 6%;
+    }
+    .wrapInfoSlider .sliderHeading {
+        font-size: 3.2rem;
+        width: 300px;
+    }
+    .wrapInfoSlider .sliderTitle {
+        font-size: 1.6rem;
+    }
+    .inputSlider {
+        max-width: 310px;
+    }
+    .inputSlider input {
+        width: 140px;
+    }
+
+    .catSliderSection .mainCatSlider button {
+        display: none !important;
+    }
+    .bannersSection .container-fluid {
+        padding: 0 12px;
+    }
+    .bannersSection .container-fluid .row {
+        display: block;
+    }
+    .bannersSection .container-fluid .row .col {
+        margin-bottom: 15px;
+    }
+    .bannersSection .box .bannerTitle {
+        font-size: 1.8rem;
+        width: 150px;
+        top: 36px;
+    }
+    .homeProducts .container-fluid {
+        padding: 0 12px;
+    }
+    .homeProducts .wrapHomeProduct {
+        display: block;
+    }
+    .homeProducts .wrapHomeProduct h2 {
+        font-size: 2.8rem;
+        margin-bottom: 22px;
+    }
+    .homeProducts .wrapHomeProduct .list-filterTab {
+        flex-wrap: wrap;
+    }
+    .homeProducts .wrapHomeProduct .list-filterTab li {
+        font-size: 1.4rem;
+        margin-left: 0;
+        margin-right: 17px;
+        margin-bottom: 10px;
+    }
+    .productRow {
+        padding: 0;
+    }
+    .productRow .productItem {
+        width: 100%;
+    }
+    .productThumb .productImg {
+        transform: scale(0.9);
+    }
+    .productThumb .productInfo .productTitle {
+        height: 25px;
+    }
+    .productRow .productPrice .btnAddProduct {
+        margin-top: 10px;
+    }
+    .homeProducts .wrapHomeProduct .list-filterTab li:hover {
+        margin-top: 0;
+    }
+    .homeProducts .row .col-3 {
+        display: none;
+    }
+    .homeProducts .row .col-9 {
+        width: 100%;
+    }
+    .homeProducts.bestSale .row {
+        padding: 0 12px;
+    }
+    .homeProducts.topProducts .row .col {
+        flex: none;
+    }
+    .mainSlider .slick-arrow {
+        display: block !important;
+    }
+    .homeProducts {
+        margin-top: 10px;
+    }
+    .newsLetterTitle {
+        font-size: 2.2rem;
+    }
+    .newsLetterDes {
+        font-size: 1.4rem;
+    }
+    .wrapNewsLetter .wrapInfoSlider {
+        top: 25px;
+    }
+    .inputSlider .btnSlider {
+        font-weight: 500;
+    }
+    .bgUrl {
+        height: 320px;
+    }
+    .wrapFooter {
+        margin: 30px 12px;
+    }
+    .wrapFooter .col {
+        flex: none;
+        margin-bottom: 15px;
+    }
+    .footerMid {
+        margin-top: 20px;
+    }
+    .footerMid img {
+        width: 170px;
+    }
+    .footerMid .halfCol {
+        width: 50%;
+    }
+    .wrapFooterWidget .footerWidgetHeading {
+        padding: 10px 0;
+    }
+
+    .footerEnd .row .col.part3 {
+        justify-content: unset;
+    }
+    .detailProduct .productInfo .wrapPrices .salePercent {
+        width: 60px;
+        top: -12px;
+    }
+    .signInWrapper .card {
+        width: 100%;
+    }
+    .signInWrapper {
+        padding: 40px 12px;
+    }
+    .wrapListing {
+        padding: 30px 12px;
+    }
+    .wrapListing .container-fluid {
+        padding: 30px 40px;
+        height: auto;
+    }
+    .archive-headerss .row .col-3 {
+        width: 100%;
+    }
+    .listingData {
+        padding: 20px 12px;
+    }
+    .listingData .row {
+        flex-direction: column-reverse;
+    }
+    .listingData .row .col-9,
+    .row .col-3 {
+        width: 100% !important;
+        margin: 0;
+    }
+    .tableSize span {
+        display: block;
+        margin-bottom: 8pxf;
+    }
+    .row .col-3 .wrapSidebar {
+        width: 100%;
+    }
+    .listingData .product-fillter {
+        flex-direction: column;
+    }
+    .listingData .total-product {
+        font-size: 1.6rem;
+        color: #7e7e7e;
+        font-weight: 400;
+    }
+    .listingData .total-product span {
+        color: #3bb77e;
+        font-weight: 500;
+    }
+    .listingData .product-fillter .sort-product {
+        margin-right: 0;
+    }
+    .listingData .product-fillter .sort-product .iconChevronDown,
+    .checkedIcon {
+        font-size: 1rem;
+    }
+    .listingData .productRow .productItem {
+        width: 100%;
+        padding: 15px 0;
+    }
+    .productThumb .productInfo .productTitle {
+        height: auto;
+    }
+    .cardBars ul li {
+        justify-content: space-between;
+    }
+    .detailsPage .wrapBreadCumb {
+        padding: 20px 12px;
+    }
+    ul.breadcrumb li {
+        margin-right: 8px;
+    }
+    ul.breadcrumb li + li:before {
+        margin-right: 8px;
+        padding: 0;
+    }
+    .container-fluid.detailProduct .row .col-8 {
+        width: 100% !important;
+        padding: 0 20px;
+    }
+    .container-fluid.detailProduct .row .col-8 .row .col-7 {
+        width: 100%;
+        padding: 0 !important;
+    }
+    .detailProduct .wrapZoomImg {
+        height: auto;
+    }
+    .container-fluid.detailProduct .row .col-8 .row .col-5 {
+        width: 100%;
+        margin-top: 25px;
+    }
+    .col-5.productInfo h1 {
+        font-size: 3rem;
+    }
+    .detailProduct .productInfo .wrapPrices .newPrice {
+        font-size: 5rem;
+    }
+    .detailProduct .productInfo .wrapPrices span.oldPrice {
+        font-size: 2.3rem;
+    }
+    .detailProduct .wrapTabs {
+        margin: 30px 0;
+        padding: 25px 12px;
+    }
+    .wrapTabs .listTabs {
+        flex-wrap: wrap;
+    }
+    .wrapTabs .listTabs .itemTabs {
+        margin: 6px 10px;
+        font-size: 1.3rem;
+        padding: 10px 20px;
+    }
+    .productRelated {
+        padding: 0 20px !important;
+    }
+    .productRelated h2 {
+        font-size: 2.2rem;
+        font-weight: 500;
+    }
+    .manageCart {
+        margin: 40px 0;
+        padding: 0 12px !important;
+    }
+    .titleManageCart {
+        width: 100% !important;
+        margin-bottom: 20px;
+    }
+    .manageCart .row {
+        margin: 0;
+    }
+    .manageCart .row .col-8,
+    .row .col-4 {
+        width: 100%;
+        padding: 0;
+    }
+    .manageCart .row .col-8 table tr,
+    table td {
+        padding: 0;
+        margin: 0;
+    }
+    .manageCart .row .col-8 table tr td {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 15px;
+    }
+    .manageCart table .tdProduct {
+        min-width: unset;
+    }
+    .manageCart table {
+        width: 100%;
+    }
+
+    .manageCart .row .col-8 table tr {
+        display: block;
+        border: 1px solid #e9ecef;
+        padding: 0 12px 10px 12px;
+        border-radius: 8px;
+        margin-bottom: 15px;
+    }
+
+    .manageCart .row .col-8 table tr td span:first-child,
+    .manageCart .row .col-8 table tr td .pc-none {
+        font-size: 1.5rem;
+        color: #253d4e;
+        font-weight: 500;
+    }
+    .manageCart .row .col-8 table tr .tdProduct span {
+        color: #faaf00 !important;
+    }
+    .boxInput {
+        width: 55px;
+        padding: 7px 6px;
+    }
+    .manageCart .wrapCardCheckOut {
+        padding-left: unset;
+    }
+    .notFound {
+        padding: 120px 12px;
+    }
+    .notFound .box {
+        width: 100%;
+    }
+    .notFound .box h1 {
+        font-size: 6.4rem;
+    }
+    .notFound .box p {
+        padding: 0;
+        margin-bottom: 35px;
+    }
+    .notFound .box .wrapInput {
+        margin: 0;
+        width: 100%;
+    }
+    .notFound .box .wrapInput:focus-within {
+        border: 1px solid #bce3c9;
+    }
+    .tabContent table tr td {
+        padding: 5px 10px;
+    }
+    .tabContent table tr th {
+        border: 1px solid #ececec;
+    }
+    .scrollTop {
+        top: 80%;
+        right: 10px;
     }
 }
 

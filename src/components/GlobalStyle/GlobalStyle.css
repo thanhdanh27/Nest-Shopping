@@ -41,3 +41,12 @@ a {
         opacity: 1;
     }
 }
+
+@keyframes showMenu {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

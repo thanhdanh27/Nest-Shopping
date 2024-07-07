@@ -2,8 +2,6 @@ import './NotFound.css';
 import NotFoundImg from '../../assets/img/page-404.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faSearch } from '@fortawesome/free-solid-svg-icons';
-import { Link } from 'react-router-dom';
-
 function NotFound() {
     return (
         <div className="notFound">
@@ -20,10 +18,10 @@ function NotFound() {
                         <FontAwesomeIcon className="iconSearch" icon={faSearch} />
                     </div>
 
-                    <Link to="/" className="btBackHome">
+                    <a href="/" className="btBackHome">
                         <FontAwesomeIcon icon={faHome} />
                         <span>Back to HomePage</span>
-                    </Link>
+                    </a>
                 </div>
             </div>
         </div>

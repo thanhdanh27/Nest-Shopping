@@ -34,6 +34,7 @@ function Header(props) {
     const history = useNavigate();
     const signOut = () => {
         history('/');
+        window.scroll(0, 0);
         context.signOut();
     };
 
@@ -64,20 +65,33 @@ function Header(props) {
     const closeNav = () => {
         setOpenNav(false);
         closeModal();
+        closeModal2();
     };
 
     const [isOpenModal, setIsOpenModal] = useState(false);
+    const [isOpenMenuUser, setIsOpenMenuUser] = useState(false);
     const openModal = () => {
         setIsOpenModal(true);
     };
     const closeModal = () => {
         setIsOpenModal(false);
         setOpenNav(false);
+        setIsOpenMenuUser(false);
     };
+    const openModal2 = () => {
+        setIsOpenModal(true);
+        setIsOpenMenuUser(true);
+    };
+    const closeModal2 = () => {
+        setIsOpenModal(false);
+        setIsOpenMenuUser(false);
+    };
+
     return (
         <>
             <header>
                 <div onClick={closeModal} className={isOpenModal === true ? 'modalWrapper' : ''}></div>
+
                 <div className="container-fluid">
                     <div className="row">
                         <div onClick={openNav} className="col-2 part1 pc-none">
@@ -147,10 +161,10 @@ function Header(props) {
                                     </li>
 
                                     {context.isLogin === 'true' ? (
-                                        <li onClick={openModal} className="headerTabsItem user text-center">
+                                        <li onClick={openModal2} className="headerTabsItem user text-center">
                                             <FontAwesomeIcon className="icon" icon={faUser} />
                                             <p className="mobile-none">Account</p>
-                                            <ul className="listUser">
+                                            <ul className={isOpenMenuUser === true ? 'listUser open' : 'listUser'}>
                                                 <li>
                                                     <FontAwesomeIcon className="iconListUser" icon={faUser} />
                                                     My Account
@@ -171,7 +185,13 @@ function Header(props) {
                                                     <FontAwesomeIcon className="iconListUser" icon={faGear} />
                                                     My Setting
                                                 </li>
-                                                <li onClick={signOut}>
+                                                <li
+                                                    onClick={(e) => {
+                                                        e.stopPropagation();
+                                                        closeModal2();
+                                                        signOut();
+                                                    }}
+                                                >
                                                     <FontAwesomeIcon className="iconListUser" icon={faSignOut} />
                                                     Log out
                                                 </li>

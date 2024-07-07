@@ -13,7 +13,7 @@ function Home(props) {
         dots: false,
         infinite: false,
         speed: 500,
-        slidesToShow: 3,
+        slidesToShow: window.innerWidth < 740 ? 1 : 3,
         slidesToScroll: 1,
         fade: false,
         arrows: true,

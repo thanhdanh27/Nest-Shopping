@@ -27,7 +27,14 @@ function Product(props) {
                 <div className="productThumb">
                     <Link to={`/product/${productData.id}`}>
                         <div className="wrapProductImg">
-                            <img className="productImg" src={productData.catImg + '?im=Resize=(420,420)'} alt="snack" />
+                            <img
+                                className="productImg"
+                                src={
+                                    `https://images.weserv.nl/?url=${encodeURIComponent(productData.catImg)}` +
+                                    '?im=Resize=(420,420)'
+                                }
+                                alt="snack"
+                            />
                             <div className="productOverplay">
                                 <ul>
                                     <li>

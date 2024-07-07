@@ -79,7 +79,7 @@ header .container-fluid {
     min-width: 200px;
     border-radius: 4px;
     background-color: #fff;
-    z-index: 1;
+    z-index: 101;
 }
 
 .itemList::-webkit-scrollbar {
@@ -127,7 +127,7 @@ header .container-fluid {
     position: relative;
     cursor: pointer;
     margin-left: 22px;
-    z-index: 1;
+    z-index: 120;
 }
 
 .headerTabsItem a {

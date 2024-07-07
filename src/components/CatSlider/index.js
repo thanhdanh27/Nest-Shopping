@@ -12,7 +12,7 @@ function CatSlider(props) {
         dots: false,
         infinite: true,
         speed: 500,
-        slidesToShow: 10,
+        slidesToShow: window.innerWidth < 740 ? 2 : 10,
         slidesToScroll: 1,
         fade: false,
         arrows: true,
@@ -42,7 +42,11 @@ function CatSlider(props) {
                             <div key={index} className="item">
                                 <div className="info">
                                     <a href="/">
-                                        <img className="imgCatSlider" src={item.catImg} alt="product" />
+                                        <img
+                                            className="imgCatSlider"
+                                            src={`https://images.weserv.nl/?url=${encodeURIComponent(item.catImg)}`}
+                                            alt="product"
+                                        />
                                     </a>
                                     <h4>{item.brand.toLowerCase()}</h4>
                                     <span>10 items</span>

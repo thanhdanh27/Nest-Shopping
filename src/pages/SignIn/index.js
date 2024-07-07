@@ -17,6 +17,7 @@ import { MyContext } from '../../App';
 const auth = getAuth(app);
 
 function SignIn() {
+    window.scroll(0, 0);
     const [loading, setLoading] = useState(false);
     const [formFields, setFormFields] = useState({
         email: '',

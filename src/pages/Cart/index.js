@@ -94,7 +94,7 @@ function Cart(props) {
                 <div className="row">
                     <div className="col-8">
                         <table>
-                            <thead>
+                            <thead className="mobile-none">
                                 <tr>
                                     <th>
                                         <Checkbox sx={{ '& .MuiSvgIcon-root': { fontSize: 22 } }} />
@@ -111,16 +111,22 @@ function Cart(props) {
                                     cartItem.map((item, index) => {
                                         return (
                                             <tr>
-                                                <td className="tdCheckBox">
+                                                <td className="tdCheckBox mobile-none">
                                                     <Checkbox sx={{ '& .MuiSvgIcon-root': { fontSize: 22 } }} />
                                                 </td>
                                                 <td className="tdProduct">
                                                     <div className="wrapImgCart">
-                                                        <img src={item.catImg} />
+                                                        <img
+                                                            src={`https://images.weserv.nl/?url=${encodeURIComponent(
+                                                                item.catImg,
+                                                            )}`}
+                                                        />
                                                     </div>
+
                                                     <span>
                                                         <a href="#!">{item.productName}</a>
                                                         <Rating
+                                                            className="starIcon"
                                                             name="half-read-only"
                                                             value={item.rating}
                                                             precision={0.5}
@@ -129,9 +135,11 @@ function Cart(props) {
                                                     </span>
                                                 </td>
                                                 <td className="tdUnitPrice">
-                                                    ${parseInt(item.price.replace(',', ''))}
+                                                    <span className="pc-none">Unit Price</span>
+                                                    <span>${parseInt(item.price.replace(',', ''))}</span>
                                                 </td>
                                                 <td>
+                                                    <span className="pc-none">Quantity</span>
                                                     <QuantityBox
                                                         index={index}
                                                         cartItem={cartItem}
@@ -139,9 +147,11 @@ function Cart(props) {
                                                     />
                                                 </td>
                                                 <td className="tdTotalPrice">
-                                                    ${parseInt(item.price.replace(',', '')) * item.quantity}
+                                                    <span className="pc-none">Subtotal</span>$
+                                                    {parseInt(item.price.replace(',', '')) * item.quantity}
                                                 </td>
                                                 <td className="tdRemove">
+                                                    <span className="pc-none">Remove</span>
                                                     <FontAwesomeIcon
                                                         onClick={() => {
                                                             deleteItemCart(item.id);
