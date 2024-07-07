@@ -113,7 +113,7 @@ function App() {
     return (
         productsData.length !== 0 && (
             <MyContext.Provider value={value}>
-                <HashRouter basename="/Nest-Shopping">
+                <HashRouter>
                     {/* {loading === true && (
                         <div className="loader">
                             <img src={Loader} alt="loader" />
