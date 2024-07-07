@@ -1,0 +1,37 @@
+{
+  "files": {
+    "main.css": "/thanhdanh27/Nest-Shopping/static/css/main.df12a3a5.css",
+    "main.js": "/thanhdanh27/Nest-Shopping/static/js/main.fe06f4fb.js",
+    "static/js/453.871fd3fc.chunk.js": "/thanhdanh27/Nest-Shopping/static/js/453.871fd3fc.chunk.js",
+    "static/media/slider2.png": "/thanhdanh27/Nest-Shopping/static/media/slider2.89d4c10e6549245f337a.png",
+    "static/media/slider1.png": "/thanhdanh27/Nest-Shopping/static/media/slider1.01fdcc91eff86c9fabdc.png",
+    "static/media/NewsLetterImg.png": "/thanhdanh27/Nest-Shopping/static/media/NewsLetterImg.408dd67727d7405d04a0.png",
+    "static/media/banner3.png": "/thanhdanh27/Nest-Shopping/static/media/banner3.2e75fb7a15818d527c70.png",
+    "static/media/TopProduct2.jpg": "/thanhdanh27/Nest-Shopping/static/media/TopProduct2.2c5a9a97689b3642ae14.jpg",
+    "static/media/banner4.png": "/thanhdanh27/Nest-Shopping/static/media/banner4.e4c8adbb80eb46aa2c91.png",
+    "static/media/banner1.png": "/thanhdanh27/Nest-Shopping/static/media/banner1.5d00c06ebb057b287f6c.png",
+    "static/media/banner-menu.png": "/thanhdanh27/Nest-Shopping/static/media/banner-menu.cd12bcd2c5449cda842c.png",
+    "static/media/banner2.png": "/thanhdanh27/Nest-Shopping/static/media/banner2.5f180836440bacefd545.png",
+    "static/media/TopProduct3.jpg": "/thanhdanh27/Nest-Shopping/static/media/TopProduct3.5781c809a0aeed0e3599.jpg",
+    "static/media/TopProduct.jpg": "/thanhdanh27/Nest-Shopping/static/media/TopProduct.030ea6a82a502a527bf2.jpg",
+    "static/media/bgUrl.png": "/thanhdanh27/Nest-Shopping/static/media/bgUrl.56479838083707e4ffd6.png",
+    "static/media/loader.gif": "/thanhdanh27/Nest-Shopping/static/media/loader.6e1d23c8f091c90f596a.gif",
+    "static/media/logo.svg": "/thanhdanh27/Nest-Shopping/static/media/logo.312c90ddea629dd64ff6fc506a5f3e6c.svg",
+    "static/media/google.png": "/thanhdanh27/Nest-Shopping/static/media/google.e12914ad8afda3f6f2e8.png",
+    "static/media/header-bg.png": "/thanhdanh27/Nest-Shopping/static/media/header-bg.a10523edeb6d171afd87.png",
+    "static/media/fillter-widget-bg.png": "/thanhdanh27/Nest-Shopping/static/media/fillter-widget-bg.cd85473257405362efb0.png",
+    "static/media/icon-1.svg": "/thanhdanh27/Nest-Shopping/static/media/icon-1.5b1776e2a1d7ec897722f605a8118984.svg",
+    "static/media/slick.svg": "/thanhdanh27/Nest-Shopping/static/media/slick.2630a3e3eab21c607e21.svg",
+    "static/media/slick.eot": "/thanhdanh27/Nest-Shopping/static/media/slick.a4e97f5a2a64f0ab1323.eot",
+    "static/media/slick.ttf": "/thanhdanh27/Nest-Shopping/static/media/slick.c94f7671dcc99dce43e2.ttf",
+    "static/media/slick.woff": "/thanhdanh27/Nest-Shopping/static/media/slick.295183786cd8a1389865.woff",
+    "index.html": "/thanhdanh27/Nest-Shopping/index.html",
+    "main.df12a3a5.css.map": "/thanhdanh27/Nest-Shopping/static/css/main.df12a3a5.css.map",
+    "main.fe06f4fb.js.map": "/thanhdanh27/Nest-Shopping/static/js/main.fe06f4fb.js.map",
+    "453.871fd3fc.chunk.js.map": "/thanhdanh27/Nest-Shopping/static/js/453.871fd3fc.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.df12a3a5.css",
+    "static/js/main.fe06f4fb.js"
+  ]
+}
