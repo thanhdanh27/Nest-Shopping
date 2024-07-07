@@ -1,6 +1,6 @@
 import './App.css';
 import Header from './components/Header';
-import { BrowserRouter, Routes, Route, HashRouter } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home/index';
 import Footer from './components/Footer/index';
 import Listing from './pages/Listing';
@@ -113,7 +113,7 @@ function App() {
     return (
         productsData.length !== 0 && (
             <MyContext.Provider value={value}>
-                <HashRouter>
+                <BrowserRouter>
                     {/* {loading === true && (
                         <div className="loader">
                             <img src={Loader} alt="loader" />
@@ -134,7 +134,7 @@ function App() {
                         <Route path="/signup" element={<SignUp />} />
                     </Routes>
                     <Footer />
-                </HashRouter>
+                </BrowserRouter>
             </MyContext.Provider>
         )
     );

@@ -46,7 +46,7 @@ function Sidebar(props) {
                         {productData.length !== 0 &&
                             productData.map((product, index) => {
                                 return (
-                                    <a href={`/Nest-Shopping/#/cat/${product.cat_name.toLowerCase()}`}>
+                                    <a href={`/cat/${product.cat_name.toLowerCase()}`}>
                                         <li key={index}>
                                             <img src={product.image} alt="" />
                                             <span className="titleCardBars">{product.cat_name}</span>

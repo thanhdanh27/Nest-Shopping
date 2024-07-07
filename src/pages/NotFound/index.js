@@ -19,7 +19,7 @@ function NotFound() {
                         <FontAwesomeIcon className="iconSearch" icon={faSearch} />
                     </div>
 
-                    <a href="/Nest-Shopping" className="btBackHome">
+                    <a href="/" className="btBackHome">
                         <FontAwesomeIcon icon={faHome} />
                         <span>Back to HomePage</span>
                     </a>

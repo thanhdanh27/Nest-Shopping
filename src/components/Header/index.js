@@ -98,7 +98,7 @@ function Header(props) {
                             <FontAwesomeIcon icon={faBars} />
                         </div>
                         <div className="col-2 part2">
-                            <a href="/Nest-Shopping">
+                            <a href="/">
                                 <img className="logo" src={Logo} alt="logo" />
                             </a>
                         </div>
@@ -153,7 +153,7 @@ function Header(props) {
                                     </li>
 
                                     <li className="headerTabsItem">
-                                        <a href="/Nest-Shopping/#/cart">
+                                        <a href="/cart">
                                             <span className="numberItem">{cartItemLength.length}</span>
                                             <FontAwesomeIcon className="icon" icon={faCartShopping} />
                                             <p className="mobile-none">Cart</p>

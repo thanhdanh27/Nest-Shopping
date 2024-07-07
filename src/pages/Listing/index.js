@@ -152,7 +152,7 @@ function Listing(props) {
                                             <FontAwesomeIcon className="chevronRightIcon" icon={faChevronRight} />
                                         </span>
                                         <li className="text-capitalize">
-                                            <a href={`/Nest-Shopping/#/cat/${id1}`}>{id1}</a>
+                                            <a href={`/cat/${id1}`}>{id1}</a>
                                         </li>
                                         {id2 !== undefined && (
                                             <span className="d-flex align-items-center">
@@ -161,9 +161,7 @@ function Listing(props) {
                                         )}
                                         {id2 !== undefined && (
                                             <li className="text-capitalize">
-                                                <a href={`/Nest-Shopping/#/cat/${id1}/${id2}`}>
-                                                    {id2.replaceAll('-', ' ')}
-                                                </a>
+                                                <a href={`/cat/${id1}/${id2}`}>{id2.replaceAll('-', ' ')}</a>
                                             </li>
                                         )}
                                     </ul>
