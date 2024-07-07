@@ -41,13 +41,13 @@ function CatSlider(props) {
                         return (
                             <div key={index} className="item">
                                 <div className="info">
-                                    <a href="/">
+                                    <Link to="/">
                                         <img
                                             className="imgCatSlider"
                                             src={`https://images.weserv.nl/?url=${encodeURIComponent(item.catImg)}`}
                                             alt="product"
                                         />
-                                    </a>
+                                    </Link>
                                     <h4>{item.brand.toLowerCase()}</h4>
                                     <span>10 items</span>
                                 </div>

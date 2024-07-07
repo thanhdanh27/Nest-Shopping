@@ -3,6 +3,7 @@ import NotFoundImg from '../../assets/img/page-404.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faSearch } from '@fortawesome/free-solid-svg-icons';
 function NotFound() {
+    window.scroll(0, 0);
     return (
         <div className="notFound">
             <div className="container-fluid">
