@@ -98,7 +98,7 @@ function Header(props) {
                             <FontAwesomeIcon icon={faBars} />
                         </div>
                         <div className="col-2 part2">
-                            <a href="/">
+                            <a href="/Nest-Shopping">
                                 <img className="logo" src={Logo} alt="logo" />
                             </a>
                         </div>

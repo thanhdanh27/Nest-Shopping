@@ -62,7 +62,7 @@ function Navbar(props) {
                         </div>
                         <ul className="listPage">
                             <li className="pageItem">
-                                <a href="/">Home</a>
+                                <a href="/Nest-Shopping">Home</a>
                             </li>
                             {navData.length !== 0 &&
                                 navData.map((item, index) => {
@@ -73,7 +73,7 @@ function Navbar(props) {
                                                 window.innerWidth < 740 ? 'pageItem ResMobile ' : 'pageItem ResPc'
                                             }
                                         >
-                                            <a href={`/cat/${item.cat_name.toLowerCase()}`}>
+                                            <a href={`/Nest-Shopping/#/cat/${item.cat_name.toLowerCase()}`}>
                                                 <span>{item.cat_name}</span> &nbsp;
                                             </a>
                                             {item.items !== 0 && (
@@ -98,7 +98,7 @@ function Navbar(props) {
                                                             <li key={index} className="menuPageItem">
                                                                 <a
                                                                     className="menuPageLink"
-                                                                    href={`/cat/${item.cat_name.toLowerCase()}/${item_.cat_name
+                                                                    href={`/Nest-Shopping/#/cat/${item.cat_name.toLowerCase()}/${item_.cat_name
 
                                                                         .replace(/\s/g, '-')
                                                                         .toLowerCase()}`}
@@ -123,7 +123,7 @@ function Navbar(props) {
                                             navData.map((item, index) => {
                                                 return (
                                                     <div key={index} className="col">
-                                                        <a href={`/cat/${item.cat_name.toLowerCase()}`}>
+                                                        <a href={`/Nest-Shopping/#/cat/${item.cat_name.toLowerCase()}`}>
                                                             <h4>{item.cat_name}</h4>
                                                         </a>
                                                         <ul className="mega-list">
@@ -132,7 +132,7 @@ function Navbar(props) {
                                                                     return (
                                                                         <li key={index} className="mega-title">
                                                                             <a
-                                                                                href={`/cat/${item.cat_name.toLowerCase()}/${item_.cat_name
+                                                                                href={`/Nest-Shopping/#/cat/${item.cat_name.toLowerCase()}/${item_.cat_name
 
                                                                                     .replace(/\s/g, '-')
                                                                                     .toLowerCase()}`}
@@ -210,7 +210,7 @@ function Navbar(props) {
                                         </Link>
                                     </li>
                                     <li className="menuPageItem">
-                                        <a className="menuPageLink" href="*">
+                                        <a className="menuPageLink" href="/Nest-Shopping/#/*">
                                             404 Error
                                         </a>
                                     </li>
