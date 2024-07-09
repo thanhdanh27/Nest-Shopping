@@ -32,7 +32,7 @@ function Banners() {
                         </div>
                     </div>
 
-                    <div className="col">
+                    <div className="col ipad-none">
                         <div className="box">
                             <img src={Banner3} alt="banner3" className="w-100" />
                             <h4 className="bannerTitle">The best Organic Products Online</h4>

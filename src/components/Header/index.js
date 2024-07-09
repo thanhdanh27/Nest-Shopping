@@ -97,13 +97,13 @@ function Header(props) {
                         <div onClick={openNav} className="col-2 part1 pc-none">
                             <FontAwesomeIcon icon={faBars} />
                         </div>
-                        <div className="col-2 part2">
+                        <div className="col-3 part2">
                             <a href="/">
                                 <img className="logo" src={Logo} alt="logo" />
                             </a>
                         </div>
 
-                        <div className=" col-5 mobile-none">
+                        <div className=" col-6 mobile-none ipad-none">
                             <div className="headerSearch">
                                 <div
                                     onClick={() => {
@@ -143,7 +143,7 @@ function Header(props) {
                             </div>
                         </div>
 
-                        <div className="col-5 part3">
+                        <div className="col-3 part3">
                             <div className="wrapperTabList">
                                 <ul className="headerTabsList">
                                     <li className="headerTabsItem">
@@ -198,7 +198,7 @@ function Header(props) {
                                             </ul>
                                         </li>
                                     ) : (
-                                        <li className="headerTabsItem mobile-none">
+                                        <li className="headerTabsItem mobile-none ipad-none">
                                             <Link className="d-block" to="/signin">
                                                 <button className="btnSigIn">Sign In</button>
                                             </Link>

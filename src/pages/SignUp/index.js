@@ -11,9 +11,13 @@ import { app } from '../../firebase';
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
 import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 const auth = getAuth(app);
 
 function SignUp() {
+    useEffect(() => {
+        window.scroll(0, 0);
+    }, []);
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
     const [loading, setLoading] = useState(false);

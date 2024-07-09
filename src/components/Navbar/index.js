@@ -45,10 +45,10 @@ function Navbar(props) {
                             <FontAwesomeIcon className={openNav === false ? 'iconClose' : ''} icon={faXmark} />
                         </span>
                     </div>
-                    <div className="col-sm-3 part1 mobile-none">
+                    <div className="col-sm-3 part1 mobile-none ipad-none">
                         <button className="btnBrowse">
                             <FontAwesomeIcon icon={faBorderAll} />
-                            &nbsp; Browse All Categories &nbsp;
+                            &nbsp; All Categories &nbsp;
                             <FontAwesomeIcon icon={faChevronDown} />
                         </button>
                     </div>
@@ -70,7 +70,7 @@ function Navbar(props) {
                                         <li
                                             key={index}
                                             className={
-                                                window.innerWidth < 740 ? 'pageItem ResMobile ' : 'pageItem ResPc'
+                                                window.innerWidth < 1023 ? 'pageItem ResMobile ' : 'pageItem ResPc'
                                             }
                                         >
                                             <a href={`/cat/${item.cat_name.toLowerCase()}`}>
@@ -155,7 +155,9 @@ function Navbar(props) {
                             </li>
 
                             <li
-                                className={window.innerWidth < 740 ? 'pageItem ResMobile page ' : 'pageItem ResPc page'}
+                                className={
+                                    window.innerWidth < 1024 ? 'pageItem ResMobile page ' : 'pageItem ResPc page'
+                                }
                             >
                                 <Link to="/">
                                     <span onClick={closeNav}>Pages</span> &nbsp;
@@ -230,7 +232,7 @@ function Navbar(props) {
                         </ul>
                     </div>
 
-                    <div className="col-sm-2 mobile-none">
+                    <div className="col-sm-2 mobile-none ipad-none">
                         <div className="supportCenter">
                             <FontAwesomeIcon className="iconSupport" icon={faHeadset} />
                             <div className="wrapSupport">

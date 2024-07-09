@@ -4,7 +4,7 @@ import TextField from '@mui/material/TextField';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye } from '@fortawesome/free-regular-svg-icons';
 import { faEyeSlash } from '@fortawesome/free-solid-svg-icons';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import GoogleIcon from '../../assets/img/google.png';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { app } from '../../firebase';
@@ -17,7 +17,9 @@ import { MyContext } from '../../App';
 const auth = getAuth(app);
 
 function SignIn() {
-    window.scroll(0, 0);
+    useEffect(() => {
+        window.scroll(0, 0);
+    }, []);
     const [loading, setLoading] = useState(false);
     const [formFields, setFormFields] = useState({
         email: '',

@@ -129,6 +129,19 @@ function Footer() {
                                 </div>
                             </div>
                         </div>
+
+                        <div className="col">
+                            <div className="wrapBoxFooter">
+                                <img
+                                    src="https://wp.alithemes.com/html/nest/demo/assets/imgs/theme/icons/icon-6.svg"
+                                    alt=""
+                                />
+                                <div className="boxInfor">
+                                    <h4>Easy returns</h4>
+                                    <span>Within 30 days</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 

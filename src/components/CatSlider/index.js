@@ -8,11 +8,17 @@ function CatSlider(props) {
         setProductData(props.data);
     }, [props.data]);
 
+    let widthWindow = 3;
+    if (window.innerWidth > 740 && window.innerWidth < 1025) {
+        widthWindow = 6;
+    } else if (window.innerWidth > 1025) {
+        widthWindow = 10;
+    }
     var settings = {
         dots: false,
         infinite: true,
         speed: 500,
-        slidesToShow: window.innerWidth < 740 ? 2 : 10,
+        slidesToShow: widthWindow,
         slidesToScroll: 1,
         fade: false,
         arrows: true,
@@ -40,7 +46,13 @@ function CatSlider(props) {
                     {productData.map((item, index) => {
                         return (
                             <div key={index} className="item">
-                                <div className="info">
+                                <div
+                                    style={{
+                                        backgroundColor:
+                                            colors[window.innerWidth > 1023 ? index % colors.length : 'none'],
+                                    }}
+                                    className="info"
+                                >
                                     <Link to="/">
                                         <img
                                             className="imgCatSlider"

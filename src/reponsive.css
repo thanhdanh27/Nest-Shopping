@@ -1,5 +1,5 @@
 /* Mobile */
-@media only screen and (max-width: 739px) {
+@media only screen and (min-width: 300px) and (max-width: 1023px) {
     header {
         padding: 20px 0;
         position: sticky;
@@ -28,7 +28,7 @@
         width: 15%;
         font-size: 2.3rem;
     }
-    header .container-fluid .row .part2 {
+    header .container-fluid .row .col-3.part2 {
         width: 70%;
     }
     header .container-fluid .row .part3 {
@@ -185,6 +185,12 @@
     .inputSlider input {
         width: 140px;
     }
+    .catSliderSection {
+        padding: 0 12px;
+    }
+    .catSliderSection .container-fluid {
+        padding: 0;
+    }
 
     .catSliderSection .mainCatSlider button {
         display: none !important;
@@ -274,7 +280,7 @@
         height: 320px;
     }
     .wrapFooter {
-        margin: 30px 12px;
+        margin: 30px 12px !important;
     }
     .wrapFooter .col {
         flex: none;
@@ -323,7 +329,7 @@
         flex-direction: column-reverse;
     }
     .listingData .row .col-9,
-    .row .col-3 {
+    .listingData .row .col-3 {
         width: 100% !important;
         margin: 0;
     }
@@ -504,15 +510,149 @@
         top: 80%;
         right: 10px;
     }
+    .tabContent .wrapComment {
+        width: 100%;
+    }
+    .tabContent .wrapComment {
+        margin: 30px 0;
+    }
 }
 
 /* Table */
 @media only screen and (min-width: 740px) and (max-width: 1023px) {
+    .ipad-none {
+        display: none !important;
+    }
+    header .container-fluid .row .part2 {
+        width: 30% !important;
+    }
+    .inputSlider input {
+        width: 210px;
+    }
+    .inputSlider {
+        max-width: unset;
+    }
+    .bannersSection .container-fluid .row {
+        display: flex;
+    }
+    .productRow .productItem {
+        width: 33.333%;
+    }
+    .productThumb .productImg {
+        transform: scale(0.88);
+    }
+    .productThumb .productInfo .productTitle {
+        min-height: 40px;
+    }
+    .homeProducts.topProducts .row .col {
+        width: 50%;
+    }
+    .homeProducts.topProducts .row .col .topProductTitle {
+        font-size: 2rem;
+    }
+    .wrapHomeProduct {
+        display: flex;
+        justify-content: space-between;
+    }
+    .homeProducts.bestSale .container-fluid {
+        margin-bottom: 20px;
+    }
+    .homeProduct.topProducts {
+        margin-top: 30px;
+    }
+    .newsLetterTitle {
+        font-size: 4rem;
+        font-weight: 500;
+    }
+    .newsLetterDes {
+        font-size: 1.8rem;
+    }
+    .wrapNewsLetter .wrapInfoSlider {
+        z-index: 2;
+    }
+    .wrapBoxFooter {
+        min-height: 137px;
+    }
+    .wrapFooter .boxFooter .col {
+        width: 33.33%;
+    }
+    .wrapFooter .footerMid .col {
+        flex: none;
+    }
+    .footerMid .halfCol {
+        width: 25%;
+    }
+    .footerEnd {
+        margin-top: 10px;
+    }
+    .wrapFooter {
+        margin: 30px 12px 0 12px !important;
+    }
+    .nav .container-fluid .row .col-sm-7 {
+        width: 100%;
+    }
+    .listingData .product-fillter {
+        flex-direction: row;
+    }
+    .listingData .productRow .productItem {
+        width: 44%;
+        margin: 0 23px;
+    }
+    .container-fluid.detailProduct .row .col-8 .row .col-7 {
+        width: 55%;
+    }
+    .container-fluid.detailProduct .row .col-8 .row .col-5 {
+        width: 41.66666667%;
+        margin-top: 0;
+        margin-left: 22px;
+    }
+    .homeProducts {
+        margin-top: 20px;
+    }
 }
 
 /* Laptop */
 @media only screen and (min-width: 1024px) {
     .pc-none {
         display: none !important;
+    }
+    .wrapBoxFooter {
+        min-height: 138px;
+        align-items: unset;
+    }
+}
+
+@media only screen and (width: 1024px) {
+    .nav .container-fluid .row .col-sm-2 {
+        display: none;
+    }
+    .nav .container-fluid .row .col-sm-7 {
+        width: 75%;
+    }
+    .wrapTopProduct .topProductTitle {
+        font-size: 2.5rem;
+    }
+    .boxFooter .row .col {
+        width: 50%;
+        flex: none;
+        margin-bottom: 20px;
+    }
+    .footerMid .row .col {
+        width: 25%;
+    }
+    .footerEnd .row .col.part1 {
+        width: 20%;
+        flex: none;
+    }
+    .footerEnd .row .col.part2 {
+        width: 50%;
+        flex: none;
+    }
+    .footerEnd .row .col.part3 {
+        width: 30%;
+        flex: none;
+    }
+    .footerEnd .contact .infoContact h3 {
+        font-size: 2.4rem;
     }
 }

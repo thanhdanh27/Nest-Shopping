@@ -27,11 +27,18 @@ function DetailsPage(props) {
         arrows: true,
     };
 
+    let widthWindow = 1;
+    if (window.innerWidth > 740 && window.innerWidth < 1023) {
+        widthWindow = 3;
+    } else if (window.innerWidth > 1023) {
+        widthWindow = 5;
+    }
+
     var settings1 = {
         dots: false,
         infinite: true,
         speed: 500,
-        slidesToShow: window.innerWidth < 740 ? 1 : 5,
+        slidesToShow: widthWindow,
         slidesToScroll: 1,
         fade: false,
         arrows: true,
@@ -323,7 +330,11 @@ function DetailsPage(props) {
                                     <QuantityBox />
 
                                     <button className="btnAddCart">
-                                        <FontAwesomeIcon style={{ paddingRight: '12px' }} icon={faCartShopping} />
+                                        <FontAwesomeIcon
+                                            className="ipad-none"
+                                            style={{ paddingRight: '12px' }}
+                                            icon={faCartShopping}
+                                        />
                                         Add to cart
                                     </button>
 
